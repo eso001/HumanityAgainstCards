@@ -12,4 +12,4 @@ function parseString(obj){
 function translateTokenToId(token){
 		const id = jwt.decode(token, secret);
 		return id.sub
-	}
+}

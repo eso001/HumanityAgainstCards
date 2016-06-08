@@ -1,10 +1,22 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import {PLAYER_LIST, AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, USER_NAME, SOCKET_TYPE } from './types'
+import {PLAYER_LIST, AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, USER_NAME, SOCKET_TYPE, ROOM_TYPE } from './types'
 //we can use browserHistory to make changes to the url
 
 const ROOT_URL = 'http://localhost:3090';
 
+export function giveRoom(room){
+	return {
+		type: ROOM_TYPE,
+		payload: room
+	}
+}
+export function giveSocket(socket){
+	return {
+		type: SOCKET_TYPE,
+		payload: socket
+	}
+}
 export function updatePlayerList(list){
 	return {
 		type: PLAYER_LIST,

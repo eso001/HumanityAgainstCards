@@ -9,21 +9,23 @@ var token;
 class Lobby extends Component {
 	componentWillMount(){
 		socket = io("localhost:3090")
+		this.props.giveSocket(socket);
 		token = localStorage.getItem('token')
 		token = { token }
 	}
 	componentDidMount(){
-		const {updatePlayerList} = this.props;
+		const {giveRoom, updatePlayerList} = this.props;
 			socket.on('initLobby', function(data){
 				console.log("lobby inited", token)
 			socket.emit('joinRoom', token)
 		})
 		socket.on('roomInfo', function(data){
-			console.log("this is roomInfo")
+			console.log("this is roomInfo", data)
 			if(data.slots){
-
+				giveRoom(data._id)
 			updatePlayerList(data.slots)
 			} else {
+				giveRoom(data._id)
 				updatePlayerList(data.userSlots)
 			} 
 		})
@@ -32,8 +34,8 @@ class Lobby extends Component {
 		})
 	}
 	begin(){
-		socket.emit('intro', {message: "hello"})
-		// browserHistory.push('/humanity/table');
+		socket.emit('begin', {room: this.props.room})
+		browserHistory.push('/humanity/table/playPhase');
 	}
 
 		renderPlayers(){
@@ -62,6 +64,7 @@ class Lobby extends Component {
 }
 function mapStateToProps(state){
 	return { message: state.auth.message,
-			 playerList: state.lobby.playerList}
+			 playerList: state.lobby.playerList,
+			 room: state.socket.room}
 }
 export default connect(mapStateToProps, actions)(Lobby)

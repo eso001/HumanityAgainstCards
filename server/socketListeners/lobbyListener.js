@@ -1,12 +1,13 @@
 const services = require('../services/lobbyServices');
 const translateTokenToId = require('../services/globalServices').translateTokenToId;
 const parseString = require('../services/globalServices').parseString;
-
+const Game = require('../socketApi/socketApi').Game;
 module.exports = {
 lobbyListener: lobbyListener
 };
 
 function lobbyListener(socket, io){
+	var game;
 	var id;
 	var currentRoomId;
 	socket.emit('initLobby', {message: "hello there"})
@@ -33,6 +34,20 @@ function lobbyListener(socket, io){
 	})
 	})
 	
+	socket.on('begin', function(data){
+		console.log("begin received", data);
+		var sockets = [];
+		var namespace = '/';
+		var roomName = data.room;
+
+		for (var socketId in io.nsps[namespace].adapter.rooms[roomName].sockets) {
+		    console.log("this is socketID", socketId);
+		    sockets.push(io.sockets.connected[socketId]);
+		}
+
+		var game = new Game(data.room, sockets, io);
+
+	})
 	socket.on('intro', function(data){
 		console.log(data)
 		io.emit("herro")

@@ -138,8 +138,10 @@ function joinRoom(id) {
 							if (err) {
 								return err;
 							}
+							console.log(lobby)
 							resolve({
-								slots: lobby.userSlots
+								_id: lobby._id,
+								userSlots: lobby.userSlots
 							})
 						})
 					} else {
