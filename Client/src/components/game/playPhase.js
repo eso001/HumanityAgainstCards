@@ -1,18 +1,25 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
+import AnswerReceiver from './answerReceiver';
 
-export default class playPhase extends Component {
+class playPhase extends Component {
 
 	render(){
 
 		return (
 				<div>
 					<div className="card">
-						Prompt:
+						{this.props.prompt}
 					</div>
-					<div className="card">
-						Place Card Here
-					</div>
+					<AnswerReceiver/>
 				</div>
 			)
 	}
 }
+function mapStateToProps(state){
+	return {
+		prompt: state.prompt,
+		givenAnswer: state.playPhase.currentAnswer
+			}
+}
+export default connect(mapStateToProps)(playPhase)

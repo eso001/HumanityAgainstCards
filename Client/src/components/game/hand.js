@@ -1,21 +1,31 @@
 import React, {Component} from 'react';
-
-export default class Hand extends Component {
+import { connect } from 'react-redux';
+import Card from './hand-card';
+class Hand extends Component {
+		renderHand(){
+				return this.props.hand.map(card =>{
+					console.log("card", card)
+					return(
+						<li key={card.id} className="card-place-holder">
+							<Card info={card}></Card>
+						</li>
+					)
+				})
+		}
 
 	render(){
-
 		return (
 				<div>
 					<ul className= "hand">
-						<li className="card hand-item">Card 1</li>
-						<li className="card hand-item">Card 2</li>
-						<li className="card hand-item">Card 3</li>
-						<li className="card hand-item">Card 4</li>
-						<li className="card hand-item">Card 5</li>
-						<li className="card hand-item">Card 6</li>
-						<li className="card hand-item">Card 7</li>
+						{this.renderHand()}
 					</ul>
 				</div>
 			)
 	}
 }
+function mapStateToProps(state){
+	return{
+		hand: state.hand
+	}
+}
+export default connect(mapStateToProps)(Hand);

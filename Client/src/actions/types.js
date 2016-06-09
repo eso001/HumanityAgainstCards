@@ -6,3 +6,7 @@ export const USER_NAME = 'user_name';
 export const PLAYER_LIST = 'player_list';
 export const SOCKET_TYPE = "socket_type";
 export const ROOM_TYPE = 'room_type';
+export const CURRENT_PROMPT = 'current_prompt';
+export const FULL_HAND = 'full_hand';
+export const ADD_CARD = 'add_card';
+export const GIVE_ANSWER = 'give_answer';

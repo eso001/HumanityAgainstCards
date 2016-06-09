@@ -33,3 +33,8 @@
 .chosen-card {
 	margin: auto 5px;
 }
+.card-place-holder{
+	list-style: none;
+	width: 160px;
+	height: 210px;
+}

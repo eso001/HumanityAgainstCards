@@ -1,5 +1,6 @@
 var Prompts = require('../cardCollection/fullCollection').prompts;
 var Answers = require('../cardCollection/fullCollection').answers;
+console.log(Answers, Prompts, "ANSWERS AND PROMPTS")
 var _ = require('lodash');
 const gameListeners = require('../socketListeners/gameListeners');
 
@@ -10,10 +11,11 @@ module.exports = {
 function Game(room, sockets, io){
 	console.log(room, sockets, io, "new game instantiated")
 	this.prompts = _.shuffle(Prompts);
-	this.Answers = _.shuffle(Answers);
+	this.answers = _.shuffle(Answers);
 	this.room = room;
 	this.allSockets = sockets;
 	this.io = io;
+	this.started = false;
 
 	for(var i = 0; i < this.allSockets.length; i++){
 		for(var props in gameListeners){
@@ -23,13 +25,30 @@ function Game(room, sockets, io){
 	}
 }
 
+Game.prototype.emitToEach = function(event, data){
+	for(var i = 0; i < this.allSockets.length; i++){
+		this.allSockets[i].emit(event, data[i])
+	}
+}
 Game.prototype.dealHandsToEachPlayer = function(){
-	var fullHand = [];
-	
-	this.io.to(this.room).emit('dealFullHand', fullHand)
+	var fullHands = [];
+	for(var i = 0; i < this.allSockets.length; i++){
+		fullHands.push(this.answers.splice(0,7))
+	}
+	this.emitToEach('dealFullHand', fullHands)
+	console.log("dealHandsToEachPlayer called", fullHands)
+}
+
+Game.prototype.dealAPrompt = function(){
+	const currentPrompt = this.prompts.shift()
+	this.io.to(this.room).emit('currentPrompt', currentPrompt)
 }
 
 Game.prototype.OneCardToEachPlayer = function(){
 	console.log("calling One card to Each Player")
-	this.io.to(this.room).emit('dealOne', {text:"card info"})
+	var oneCardToEach = [];
+	for(var i = 0; i < this.allSockets.length; i++){
+		oneCardEach.push(this.answers.shift())
+	}
+	this.emitToEach('dealOneCard', oneCardToEach);
 }

@@ -3,19 +3,28 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/gameActions';
 import Scoreboard from './scoreboard';
 import Hand from './hand';
+import {DragDropContext} from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 class Table extends Component {
 	componentDidMount(){
 		if(!this.props.socket){
 			return;
 		}
-		var {socket} = this.props
+		var {socket, giveFullHand, currentPrompt} = this.props
 		socket.emit("startGame")
 		console.log("start game emitted")
 		socket.on('dealOne', function(){
 			console.log("I GOT DEALT ONE");
 		})
-
+		socket.on('dealFullHand', function(data){
+			console.log("this is the full hand", data)
+			giveFullHand(data);
+		})
+		socket.on('currentPrompt', function(data){
+			console.log("this is prompt", data)
+			currentPrompt(data.text)
+		})
 	}
 	render(){
 			return (
@@ -33,4 +42,4 @@ class Table extends Component {
 function mapStateToProps(state){
 	return { socket: state.socket.socket}
 }
-export default connect(mapStateToProps, actions)(Table)
+export default DragDropContext(HTML5Backend)(connect(mapStateToProps, actions)(Table))
