@@ -1,26 +1,50 @@
 import React, {Component} from 'react';
+import { connect } from 'react-redux';
 
-export default class pickPhase extends Component {
-
+class pickPhase extends Component {
+	chooseFunniest(event){
+		var {socket} = this.props
+		var chosenOne;
+		var cardId = event.target.getAttribute('class').split(' ')[0];
+		console.log(cardId, this.props.options)
+		cardId = +cardId;
+			this.props.options.forEach(function(item){
+			if(item.id === cardId){
+				chosenOne = item
+			}
+			})
+		socket.emit("theChosenOne", chosenOne)
+	}
+	renderOptions(){
+		return this.props.options.map(card => {
+			return (
+					<li key={card.id} onClick={this.chooseFunniest.bind(this)} className={card.id + " chosen-card card"}>
+						{card.text}
+					</li>
+				)
+		})
+	}
 	render(){
 
 		return (
 				<div>
-					<div className="card">
-						Prompt:
-					</div>
 					<ul className="chosen-cards">
-						<li key={1} className="chosen-card card">
-							Chosen Card 1
-						</li>
-						<li key={2} className="chosen-card card">
-							Chosen Card 2
-						</li>
-						<li key={3} className="chosen-card card">
-							Chosen Card 3
+						<li className="chosen-card card">
+							{this.props.prompt}
 						</li>
 					</ul>
+						<ul className="chosen-cards">
+							{this.renderOptions()}
+						</ul>
 				</div>
 			)
 	}
 }
+function mapStateToProps(state){
+	return {
+		socket: state.socket.socket,
+		prompt: state.prompt,
+		options: state.pickPhase.options
+	}
+}
+export default connect(mapStateToProps)(pickPhase)

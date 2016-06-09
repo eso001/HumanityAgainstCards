@@ -38,3 +38,8 @@
 	width: 160px;
 	height: 210px;
 }
+.centerElements{
+	width: 300px;
+	margin: 0 auto;
+	display: block;
+}

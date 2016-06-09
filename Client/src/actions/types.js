@@ -10,3 +10,4 @@ export const CURRENT_PROMPT = 'current_prompt';
 export const FULL_HAND = 'full_hand';
 export const ADD_CARD = 'add_card';
 export const GIVE_ANSWER = 'give_answer';
+export const PICKPHASE_OPTIONS = 'pickphase_options';

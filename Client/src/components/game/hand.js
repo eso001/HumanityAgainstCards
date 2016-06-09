@@ -4,7 +4,6 @@ import Card from './hand-card';
 class Hand extends Component {
 		renderHand(){
 				return this.props.hand.map(card =>{
-					console.log("card", card)
 					return(
 						<li key={card.id} className="card-place-holder">
 							<Card info={card}></Card>

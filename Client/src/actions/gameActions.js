@@ -1,4 +1,4 @@
-import { CURRENT_PROMPT, FULL_HAND, ADD_CARD, GIVE_ANSWER } from './types';
+import { CURRENT_PROMPT, FULL_HAND, ADD_CARD, GIVE_ANSWER, PICKPHASE_OPTIONS } from './types';
 
 export function currentPrompt(prompt){
 	return {
@@ -23,5 +23,11 @@ export function giveAnswer(card){
 	return {
 		type: GIVE_ANSWER,
 		payload: card
+	}
+}
+export function receivePickPhaseOptions(cardList){
+	return {
+		type: PICKPHASE_OPTIONS,
+		payload: cardList
 	}
 }

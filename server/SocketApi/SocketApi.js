@@ -16,6 +16,9 @@ function Game(room, sockets, io){
 	this.allSockets = sockets;
 	this.io = io;
 	this.started = false;
+	this.numberOfPlayers = this.allSockets.length;
+	this.playerAnswers = [];
+	this.playersReady = 0;
 
 	for(var i = 0; i < this.allSockets.length; i++){
 		for(var props in gameListeners){

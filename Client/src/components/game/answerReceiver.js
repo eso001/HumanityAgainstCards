@@ -5,7 +5,9 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/gameActions';
 	var cardTarget = {
   		drop: function(props, monitor) {
-			props.giveAnswer(monitor.getItem())
+  			var item = monitor.getItem()
+			props.giveAnswer(item)
+			props.socket.emit('sendCard', item)
   		},
   		canDrop: function(props, monitor){
   			if(!props.info){
@@ -32,7 +34,6 @@ class AnswerReceiver extends Component{
 				)
 		} else {
 			if(canDrop === true){
-				console.log("this is props info", this.props.info)
 			return (
 				<div className="card hand-item" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'green'}}>{this.props.info.text}</div>
 				)
@@ -54,7 +55,8 @@ const { connectDropTarget, isOver } = this.props;
 	}
 }
 function mapStateToProps(state){
-	return { info: state.playPhase.currentAnswer };
+	return { info: state.playPhase.currentAnswer,
+			 socket: state.socket.socket };
 
 }
 
