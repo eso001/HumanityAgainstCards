@@ -5,17 +5,20 @@ var parseString = require('./globalServices').parseString;
 module.exports = {
 	joinRoom: joinRoom,
 	leaveRoom: leaveRoom,
-	findUsername: findUsername
+	findUsername: findUsername,
+	startGame: startGame
 };
 
+function startGame(lobbyId){
+	Lobby.findOneAndUpdate({_id: lobbyId}, {started: true}, function(){
+		console.log("game start saved in db")
+	})
+}
 function saveUserLobby(id, lobbyId) {
-	User.findOneAndUpdate({
-			_id: id
-		}, {
-			currentLobby: lobbyId
-		}, {
-			upsert: true
-		},
+	User.findOneAndUpdate(
+		{ _id: id },
+		{ currentLobby: lobbyId },
+	    { upsert: true },
 		function(err, doc) {
 			if (err) {
 				return err;

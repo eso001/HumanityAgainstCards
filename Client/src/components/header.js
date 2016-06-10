@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import * as actions from '../actions/index';
 
 class Header extends Component {

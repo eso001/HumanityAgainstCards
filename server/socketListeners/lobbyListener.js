@@ -48,17 +48,13 @@ function lobbyListener(socket, io){
 		var sockets = [];
 		var namespace = '/';
 		var roomName = data.room;
-
+		services.startGame(roomName)
 		for (var socketId in io.nsps[namespace].adapter.rooms[roomName].sockets) {
 		    sockets.push(io.sockets.connected[socketId]);
 		}
 
 		var game = new Game(data.room, sockets, io);
 		game.init();
-	})
-	socket.on('intro', function(data){
-		console.log(data)
-		io.emit("herro")
 	})
 	
 }

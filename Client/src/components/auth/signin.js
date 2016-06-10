@@ -7,6 +7,7 @@ import * as actions from '../../actions/index';
 class Signin extends Component {
 
 handleFormSubmit({username, password}){
+	console.log("username, password sending to action creator", username, password)
 	this.props.signinUser({username, password})
 }
 componentWillUnmount(){

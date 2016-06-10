@@ -16,11 +16,9 @@ class Lobby extends Component {
 	componentDidMount(){
 		const {giveRoom, updatePlayerList} = this.props;
 			socket.on('initLobby', function(data){
-				console.log("lobby inited", token)
 			socket.emit('joinRoom', token)
 		})
 		socket.on('roomInfo', function(data){
-			console.log("this is roomInfo", data)
 			if(data.slots){
 				giveRoom(data._id)
 			updatePlayerList(data.slots)
@@ -28,9 +26,6 @@ class Lobby extends Component {
 				giveRoom(data._id)
 				updatePlayerList(data.userSlots)
 			} 
-		})
-		socket.on('herro', function(){
-			console.log("herro there");
 		})
 	}
 	begin(){

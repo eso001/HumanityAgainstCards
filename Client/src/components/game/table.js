@@ -12,7 +12,6 @@ class Table extends Component {
 			return;
 		}
 		var {username, socket, giveFullHand, currentPrompt} = this.props
-		socket.emit("startGame")
 		console.log("start game emitted")
 		socket.on('dealOne', function(){
 			console.log("I GOT DEALT ONE");
