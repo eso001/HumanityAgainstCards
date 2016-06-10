@@ -11,3 +11,5 @@ export const FULL_HAND = 'full_hand';
 export const ADD_CARD = 'add_card';
 export const GIVE_ANSWER = 'give_answer';
 export const PICKPHASE_OPTIONS = 'pickphase_options';
+export const UPDATE_SCOREBOARD = 'update_scoreboard';
+export const CLEAR_ANSWER = 'clear_answer';

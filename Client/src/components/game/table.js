@@ -11,7 +11,7 @@ class Table extends Component {
 		if(!this.props.socket){
 			return;
 		}
-		var {socket, giveFullHand, currentPrompt} = this.props
+		var {username, socket, giveFullHand, currentPrompt} = this.props
 		socket.emit("startGame")
 		console.log("start game emitted")
 		socket.on('dealOne', function(){
@@ -24,6 +24,10 @@ class Table extends Component {
 		socket.on('currentPrompt', function(data){
 			console.log("this is prompt", data)
 			currentPrompt(data.text)
+		})
+		socket.on('giveAllUsernames', function(){
+			socket.emit('myUsername', username)
+			console.log("EMITTING MYUSERNAME", username)
 		})
 	}
 	render(){
@@ -40,6 +44,7 @@ class Table extends Component {
 	}
 }
 function mapStateToProps(state){
-	return { socket: state.socket.socket}
+	return { socket: state.socket.socket,
+			 username: state.user.name}
 }
 export default DragDropContext(HTML5Backend)(connect(mapStateToProps, actions)(Table))

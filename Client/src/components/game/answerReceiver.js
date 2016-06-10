@@ -7,6 +7,7 @@ import * as actions from '../../actions/gameActions';
   		drop: function(props, monitor) {
   			var item = monitor.getItem()
 			props.giveAnswer(item)
+			console.log("card is sent");
 			props.socket.emit('sendCard', item)
   		},
   		canDrop: function(props, monitor){

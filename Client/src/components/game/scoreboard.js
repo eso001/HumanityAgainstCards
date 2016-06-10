@@ -1,31 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import * as actions from '../../actions/gameActions';
 
+class Scoreboard extends Component {
 
-export default class Scoreboard extends Component {
+	componentDidMount(){
+		var {socket, updateScoreboard} = this.props
+		socket.on('updateScoreboard', function(data){
+			updateScoreboard(data)
+			console.log(data, "scoreboard")
+		})
+	}
+	renderScoreboard(){
+		return this.props.scoreboard.map(user => {
+			if(user.played){
+				return <li>{"user has played" + user.username + ": " + user.score}</li>
+			}
+			return (<li>{user.username + ": " + user.score}</li>)
+
+		})
+	}
 	render(){
 			return (
 			<div>
+				<br />
 				<nav className="navbar navbar-light">
-					<div>
-						Scoreboard
-					</div>
-					<br />
 					<ul className="nav navbar-nav">
-						<li className="nav-item" key={1}>
-							Player 1 : 0
-						</li>
-						<li className="nav-item" key={2}>
-							Player 2 : 0 
-						</li>
-						<li className="nav-item" key={3}>
-							Player 3 : 0
-						</li>
-						<li className="nav-item" key={4}>
-							Player 4 : 0
-						</li>
-						<li className="nav-item" key={5}>
-							Player 5 : 0
-						</li>
+						{this.renderScoreboard()}
 					</ul>
 				</nav>
 				<br />
@@ -33,3 +34,9 @@ export default class Scoreboard extends Component {
 			)
 	}
 }
+function mapStateToProps(state){
+	return { socket: state.socket.socket,
+			 scoreboard: state.scoreboard}
+}
+
+export default connect(mapStateToProps, actions)(Scoreboard)

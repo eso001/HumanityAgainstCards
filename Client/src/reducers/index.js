@@ -8,6 +8,7 @@ import prompt from './prompt_reducer';
 import hand from './hand_reducer';
 import playPhase from './playPhase_reducer';
 import pickPhase from './pickPhase_reducer';
+import scoreboard from './scoreboard_reducer';
 const rootReducer = combineReducers({
 	form,
 	auth,
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
 	prompt,
 	playPhase,
 	hand,
-	pickPhase
+	pickPhase,
+	scoreboard
 });
 
 export default rootReducer;

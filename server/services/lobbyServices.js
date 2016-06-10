@@ -4,7 +4,8 @@ const jwt = require('jwt-simple');
 var parseString = require('./globalServices').parseString;
 module.exports = {
 	joinRoom: joinRoom,
-	leaveRoom: leaveRoom
+	leaveRoom: leaveRoom,
+	findUsername: findUsername
 };
 
 function saveUserLobby(id, lobbyId) {
@@ -44,7 +45,16 @@ function findPlayerLobby(id) {
 		})
 	})
 }
-
+function findUsername(id){
+	return new Promise(function(resolve){
+		User.findById(id, function(err, doc){
+			if(err) {
+				return err;
+			}
+			resolve(parseString(doc).username)
+		})
+	})
+}
 function findPlayerList(id) {
 	return new Promise(function(resolve) {
 		console.log("id find player list:", id)
