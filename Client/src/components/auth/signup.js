@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router';
 import { reduxForm } from 'redux-form';
 import * as actions from '../../actions/index';
 
@@ -24,7 +24,9 @@ class Signup extends Component {
 	render(){
 		const {handleSubmit, fields: { username, password, passwordConfirm}} = this.props;
 		return (
-			<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+			<div>
+			<h2 className="authBanner">Sign up</h2>
+			<form className="authForm" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 				<fieldset className="form-group">
 					<label>Username:</label>
 					<input type="username" className="form-control" {...username} />
@@ -41,8 +43,10 @@ class Signup extends Component {
 					{passwordConfirm.touched && passwordConfirm.error && <div className="error">{passwordConfirm.error}</div>}
 				</fieldset>
 				{this.renderAlert()}
-				<button className="btn btn-primary" action="submit">Sign up</button>
+				<Link className="btn btn-danger authButtons backButton" to="/">Back</Link>
+				<button className="btn btn-primary authButtons" action="submit">Sign up</button>
 			</form>
+			</div>
 			)
 	}
 }

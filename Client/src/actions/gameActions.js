@@ -1,4 +1,4 @@
-import { CURRENT_PROMPT, FULL_HAND, ADD_CARD, GIVE_ANSWER, PICKPHASE_OPTIONS, UPDATE_SCOREBOARD, CLEAR_ANSWER } from './types';
+import { NEW_CHOOSER, CURRENT_PROMPT, FULL_HAND, ADD_CARD, GIVE_ANSWER, PICKPHASE_OPTIONS, UPDATE_SCOREBOARD, CLEAR_ANSWER } from './types';
 
 export function updateScoreboard(scoreboard){
 	return {
@@ -41,5 +41,13 @@ export function clearAnswer(){
 	return {
 		type: CLEAR_ANSWER,
 		payload: ''
+	}
+}
+
+export function giveChooser(chooserName){
+	console.log("giveChooser is called", chooserName)
+	return {
+		type: NEW_CHOOSER,
+		payload: chooserName
 	}
 }

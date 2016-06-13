@@ -11,7 +11,7 @@ import * as actions from '../../actions/gameActions';
 			props.socket.emit('sendCard', item)
   		},
   		canDrop: function(props, monitor){
-  			if(!props.info){
+  			if(!props.info && !props.chosenOne){
   				return true
   			}
   			return false
@@ -27,21 +27,19 @@ import * as actions from '../../actions/gameActions';
 }
 class AnswerReceiver extends Component{
 	renderCard(){
-	const { connectDropTarget, isOver, canDrop } = this.props;
-
-		if(!this.props.info){
+	const { connectDropTarget, isOver, canDrop, chosenOne } = this.props;
+		if(!this.props.info && !chosenOne){
 			return (
-				<div style={{height: '100%', width: '100%', opacity: isOver && 0.5, backgroundColor: isOver && 'yellow'}}> Place Card Here </div>
+				<div style={{height: '100%', width: '100%', opacity: isOver && 0.5, backgroundColor: isOver && 'green'}}>Place a card.</div>
 				)
 		} else {
-			if(canDrop === true){
-			return (
-				<div className="card hand-item" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'green'}}>{this.props.info.text}</div>
-				)
-			} else {
-				console.log("this is props info", this.props.info)
+			if(this.props.info){
 				return (
 				<div className="card hand-item" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'red'}}>{this.props.info.text}</div>
+				)
+			} else {
+				return (
+				<div className="card hand-item" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'red'}}>Don't place a card, you're picking this round.</div>
 				)
 			}
 		}
@@ -57,7 +55,8 @@ const { connectDropTarget, isOver } = this.props;
 }
 function mapStateToProps(state){
 	return { info: state.playPhase.currentAnswer,
-			 socket: state.socket.socket };
+			 socket: state.socket.socket,
+			 chosenOne: state.table.chooser.chosenOne };
 
 }
 

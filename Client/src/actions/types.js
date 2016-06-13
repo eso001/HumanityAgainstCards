@@ -13,3 +13,4 @@ export const GIVE_ANSWER = 'give_answer';
 export const PICKPHASE_OPTIONS = 'pickphase_options';
 export const UPDATE_SCOREBOARD = 'update_scoreboard';
 export const CLEAR_ANSWER = 'clear_answer';
+export const NEW_CHOOSER = 'new_chooser';

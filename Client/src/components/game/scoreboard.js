@@ -24,11 +24,9 @@ class Scoreboard extends Component {
 			return (
 			<div>
 				<br />
-				<nav className="navbar navbar-light">
-					<ul className="nav navbar-nav">
+					<ul className="flexContainer">
 						{this.renderScoreboard()}
 					</ul>
-				</nav>
 				<br />
 			</div>
 			)

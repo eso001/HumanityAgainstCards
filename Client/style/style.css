@@ -1,7 +1,9 @@
 .error {
 	color: red;
 }
-
+html {
+	background-color: #EDEFEC;
+}
 .hand {
 	display: flex;
 	flex-direction: row;
@@ -22,6 +24,15 @@
 	margin: auto 5px;
 }
 
+.flexContainer {
+	text-decoration: none;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	flex-flow: center;
+	justify-content: space-around;
+	width: 100%;
+}
 .chosen-cards {
 		display: flex;
 	flex-direction: row;
@@ -43,3 +54,199 @@
 	margin: 0 auto;
 	display: block;
 }
+.gray {
+  background-color: #EDEFEC;
+}
+.black {
+  width: 200px;
+  height: 200px;
+  background-color:#111;
+}
+.purple {
+  width: 200px;
+  height: 200px;
+  background-color: #493F5A;
+}
+.white {
+  width: 200px;
+  height: 200px;
+  background-color: #FEFEF4;
+
+}
+.flyAway {
+	background-color: white;
+	width: 200px;
+	height: 300px;
+	position: absolute;
+	border-radius: 15px;
+	text-align: center;
+	padding-top: 50px;
+	-webkit-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
+    -moz-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
+	box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
+}
+.welcomeTitleBanner {
+	width: 100%;
+	height: 320px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding-top: 100px;
+	z-index: 100;
+}
+.relative {
+	position: relative;
+}
+.slogan{
+	color: #FEFEF4;
+	position: relative;
+	top: 50px;
+
+}
+.welcomeLinks {
+	height: 100%;
+	width: 100%;
+}
+.welcomeLinks:hover {
+	    text-decoration: none;
+    color: #555
+}
+a:link {
+	font-size: 20px;
+    text-decoration: none;
+    color: white;
+}
+.terribleH1 {
+	font-size: 70px;
+	    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+}
+a:visited {
+    text-decoration: none;
+    color: white;
+}
+
+a:active {
+    text-decoration: underline;
+
+}
+.nine{
+	background-color: #45ABC3;
+
+}
+.two {
+	background-color: #45C3A1;
+	color: white;
+}
+.eight {
+	background-color: #FFBC66;
+
+	color: white;
+}
+.welcomeCardHolder {
+	max-width: 1200px;
+	height: 800px;
+	background-color: inherit;
+	left: 15%;
+
+}
+.authBanner {
+	width: 100%;
+	height: 200px;
+	background-color: black;
+	color: white;
+	text-align: center;
+	padding-top: 60px;
+	z-index: 100;
+	font-size: 80px;
+}
+.authForm {
+	margin: 100px 20%;
+	padding-bottom: 110px;
+}
+.authButtons {
+	margin-top:20px;
+	vertical-align: middle;
+	text-align: center;
+	margin-right: 5px;
+	height: 50px;
+	width: 120px;
+	font-size: 30px;
+	font-family: sans-serif;
+}
+
+.headerRelative{
+	position: relative;
+	bottom: 15px;
+	font-size: 40px;
+}
+.headerRelativeOpposite{
+	position: relative;
+	top: 15px;
+	font-size: 40px;
+}
+
+.playDiv {
+	padding: 100px 0;
+
+}
+
+.playButton{
+
+	height: 500px;
+	width: 500px;
+	background-color: #222;
+	border-radius: 50%;
+	font-size: 100px;
+	color:white;
+	box-shadow: 0 5px 0 #444;
+}
+.playButton:hover{
+	background-color: #555;
+}
+.roomText {
+	font-size: 40px;
+	color: #222;
+	padding-bottom: 15px;
+}
+.lobbyList{
+	list-style: none;
+	margin: 0 auto;
+	width: 40%;
+	padding-bottom: 100px;
+}
+
+.eachLobbyPlayer{
+	background-color: #222;
+	color: white;
+	border: 2px #333 solid;
+	border-radius: 10px;
+	margin: 5px 0;
+	font-size: 35px;
+	padding: 10px 0 10px 40px;
+}
+
+.lobbyTitle {
+	font-size: 40px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+	text-align: center;
+
+}
+
+.beginLobby {
+  background-color: #EDEFEC;
+
+	color: #222;
+	border: 2px #333 solid;
+	border-radius: 10px;
+	margin: 5px 0;
+	font-size: 35px;
+	padding: 10px 0 10px 40px;
+}
+.lobby {
+	padding-top: 50px;
+}
+.beginLobby:hover{
+	background-color: #666;
+	color: white;
+}
+

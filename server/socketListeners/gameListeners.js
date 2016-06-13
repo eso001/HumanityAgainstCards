@@ -4,11 +4,13 @@ module.exports = {
 	myUsername: myUsername
 }
 
-
+function disconnect(socket){
+	console.log(this.allInfo[socket.id], " has disconnected inside game listener");
+}
 function sendCard(socket, data){
 	console.log("this is the card a player sent", data)
 	this.playerAnswers.push(data)
-	if(this.playerAnswers.length === 1){
+	if(this.playerAnswers.length === this.numberOfPlayers - 1){
 		console.log("this.playerAnswers", this.playerAnswers)
 		this.emitToRoom('chooseBestAnswer', this.playerAnswers)
 		this.playerAnswers = [];
@@ -30,6 +32,7 @@ function theChosenOne(socket, data){
 	this.addOneToWinner(winner)
 	this.oneCardToEachPlayer()
 	this.dealAPrompt()
+	this.giveCurrentChooser();
 }
 
 function myUsername(socket, data){
@@ -45,7 +48,8 @@ function myUsername(socket, data){
 	if(truther === false){
 	this.setupScoreboard(data)
 	}
-	if(this.scoreboard.length === 1){
+	if(this.scoreboard.length === this.numberOfPlayers){
+		this.giveCurrentChooser()
 		this.emitToRoom('updateScoreboard', this.scoreboard)
 	}
 	console.log("all info", this.allInfo)

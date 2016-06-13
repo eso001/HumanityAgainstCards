@@ -21,6 +21,7 @@ function Game(room, sockets, io){
 	this.playersReady = 0;
 	this.matchHistory = [];
 	this.scoreboard = [];
+	this.indexOfCurrentPicker = Math.floor(Math.random()*this.numberOfPlayers)
 	for(var i = 0; i < this.allSockets.length; i++){
 		for(var props in gameListeners){
 			console.log(gameListeners[props], props, "gamelistener[props], props")
@@ -37,8 +38,23 @@ Game.prototype.init = function(){
 		}
 		console.log("game begun");
 		this.dealHandsToEachPlayer()
+		this.giveCurrentChooser()
 		this.dealAPrompt()
 		this.started = true;
+}
+Game.prototype.giveCurrentChooser = function(){
+	console.log("CURRENT CHOOSER")
+	console.log("CURRENT CHOOSER")
+	console.log("CURRENT CHOOSER")
+	console.log("GIVE CURRENT CHOOSER", this.allSockets[this.indexOfCurrentPicker].id,  this.allInfo )
+	var currentChooser = this.allInfo[this.allSockets[this.indexOfCurrentPicker].id]
+	console.log("CURRENT CHOOSER", currentChooser)
+	this.emitToRoom('chooser', {chooser: currentChooser})
+	if(this.indexOfCurrentPicker >= this.numberOfPlayers - 1){
+	this.indexOfCurrentPicker = 0;
+	} else {
+		this.indexOfCurrentPicker++;
+	}
 }
 Game.prototype.emitToEach = function(event, data){
 
@@ -60,7 +76,6 @@ Game.prototype.dealHandsToEachPlayer = function(){
 		}
 	}
 	this.emitToEach('dealFullHand', fullHands)
-	console.log("dealHandsToEachPlayer called", fullHands)
 }
 
 Game.prototype.dealAPrompt = function(){

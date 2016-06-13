@@ -27,6 +27,7 @@ class Lobby extends Component {
 				updatePlayerList(data.userSlots)
 			} 
 		})
+
 	}
 	begin(){
 		socket.emit('begin', {room: this.props.room})
@@ -36,23 +37,31 @@ class Lobby extends Component {
 		renderPlayers(){
 			var counter = 0
 		if(!this.props.playerList){
-			return (<li></li>)
+			return (<li className="eachLobbyPlayer">Loading...</li>)
 		} else {
+			const currentLength = this.props.playerList.length;
+			for(var i = this.props.playerList.length; i < 5; i++){
+				let temp = "slot " + (currentLength+ i) ;
+				this.props.playerList.push({username:temp})
+			}
 		return this.props.playerList.map(player => {
 			counter++
 			console.log("player", player)
-			return (<li key={counter}>{player.username}</li>)
+			return (<li key={counter} className="eachLobbyPlayer">{player.username}</li>)
 		})
 	}
 	}
 	render(){
 			return (
-			<div>
-			<Link className="btn btn-danger" to="/humanity/rooms">Back</Link>
-			<ul>
-				{this.renderPlayers()}
-			</ul>
-			<button onClick={this.begin.bind(this)}>Begin!</button>
+			<div className="lobby">
+				<ul className="lobbyList">
+					<Link className="btn btn-danger" to="/humanity/rooms">Back</Link>
+					<li className="lobbyTitle">Fight to the Death with</li>
+					{this.renderPlayers()}
+					<li className="beginLobby" onClick={this.begin.bind(this)}>
+						Begin
+					</li>
+				</ul>
 			</div>
 			)
 	}
@@ -63,3 +72,4 @@ function mapStateToProps(state){
 			 room: state.socket.room}
 }
 export default connect(mapStateToProps, actions)(Lobby)
+

@@ -12,7 +12,9 @@ const mongoose = require('mongoose');
 const cors = require('cors');
 const lobby = require('./controllers/lobbyServer')
 const user = require('./controllers/user')
-mongoose.connect('mongodb://localhost:auth/auth')
+mongoose.connect('mongodb://humanityagainstcards:humanityagainstcards@ds013024.mlab.com:13024/humanityagainstcards')
+
+// mongoose.connect('mongodb://')
 //App Setup
 
 //morgan and bodyparser are considered "middleware";

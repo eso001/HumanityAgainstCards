@@ -33,7 +33,7 @@ class PlayPhase extends Component {
 function mapStateToProps(state){
 	console.log("this is state", state)
 	return {
-		prompt: state.prompt,
+		prompt: state.table.prompt,
 		playPhase: state.playPhase,
 		socket: state.socket.socket
 			}

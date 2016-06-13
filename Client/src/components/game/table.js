@@ -11,22 +11,34 @@ class Table extends Component {
 		if(!this.props.socket){
 			return;
 		}
-		var {username, socket, giveFullHand, currentPrompt} = this.props
+		var {username, giveChooser, socket, giveFullHand, currentPrompt} = this.props
 		console.log("start game emitted")
 		socket.on('dealOne', function(){
-			console.log("I GOT DEALT ONE");
 		})
 		socket.on('dealFullHand', function(data){
-			console.log("this is the full hand", data)
 			giveFullHand(data);
 		})
 		socket.on('currentPrompt', function(data){
-			console.log("this is prompt", data)
 			currentPrompt(data.text)
 		})
 		socket.on('giveAllUsernames', function(){
 			socket.emit('myUsername', username)
-			console.log("EMITTING MYUSERNAME", username)
+		})
+		socket.on('chooser', function(data){
+			console.log("chooser is here", data)
+			var amITheChosenOne;
+			if(username === data.chooser){
+				amITheChosenOne = {
+					chooserName: data.chooser,
+					chosenOne: true
+				}
+			} else {
+				amITheChosenOne = {
+					chooserName: data.chooser,
+					chosenOne: false
+				}
+			}
+			giveChooser(amITheChosenOne)
 		})
 	}
 	render(){

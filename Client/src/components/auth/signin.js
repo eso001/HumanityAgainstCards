@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { reduxForm } from 'redux-form';
-
+import { Link } from 'react-router';
 import * as actions from '../../actions/index';
 
 class Signin extends Component {
@@ -26,7 +26,10 @@ renderAlert(){
 	render(){
 
 		const { handleSubmit, fields: { username, password}} = this.props;
-		return(<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>	
+		return(
+		<div>
+			<h2 className="authBanner">Sign in</h2>
+			<form className="authForm" onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>	
 			<fieldset className="form-group">
 				<label>Username:</label>
 				<input {...username} className="form-control" />
@@ -36,8 +39,10 @@ renderAlert(){
 				<input type="password" {...password} className="form-control" />
 			</fieldset>
 			{this.renderAlert()}
-			<button action="submit" className="btn btn-primary">Sign in</button>
+			<Link className="btn btn-danger authButtons backButton" to="/">Back</Link>
+			<button action="submit" className="btn btn-primary authButtons">Sign in</button>
 		</form>
+		</div>
 		)
 	}
 }

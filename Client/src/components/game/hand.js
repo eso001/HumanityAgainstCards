@@ -15,7 +15,7 @@ class Hand extends Component {
 	render(){
 		return (
 				<div>
-					<ul className= "hand">
+					<ul className="hand">
 						{this.renderHand()}
 					</ul>
 				</div>

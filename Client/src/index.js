@@ -39,14 +39,14 @@ ReactDOM.render(
   			<Route path="signout" component={Signout} />
   			<Route path="signup" component={Signup} />
             <Route path="humanity" component={RequireAuth(Humanity)} >
-    			<Route path="humanity/rooms" component={RequireAuth(Rooms)} />
-                    <Route path="humanity/lobby" component={RequireAuth(Lobby)} />
-                    <Route path="humanity/table" component={RequireAuth(Table)} >
-                        <Route path="playPhase" component={PlayPhase} />
-                        <Route path="pickPhase" component={PickPhase} />
-                    </Route>
+    			      <Route path="rooms" component={RequireAuth(Rooms)} />
+                <Route path="lobby" component={RequireAuth(Lobby)} />
+                <Route path="table" component={RequireAuth(Table)} >
+                    <Route path="playPhase" component={PlayPhase} />
+                    <Route path="pickPhase" component={PickPhase} />
                 </Route>
-  		    </Route>
+            </Route>
+  		</Route>
   	</Router>
   </Provider>
-  , document.querySelector('.container'));
+  , document.querySelector('.container1'));

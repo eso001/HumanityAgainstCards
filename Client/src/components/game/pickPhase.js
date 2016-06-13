@@ -4,19 +4,20 @@ import * as actions from '../../actions/gameActions';
 import { browserHistory } from 'react-router';
 class pickPhase extends Component {
 	componentDidMount(){
-		var counter = 0;
-		var {socket, addCard, currentPrompt, clearAnswer} = this.props;
+		var {socket, addCard, clearAnswer} = this.props;
 		socket.on('dealOneCard', function(data){
 			console.log("deal one card receieved")
-
+			if(this.props.hand.length < 7){
 			addCard(data)
-			counter++;
-			console.log(counter)
+			}
 				browserHistory.push('/humanity/table/playPhase')
 		})
 		clearAnswer();
 	}
 	chooseFunniest(event){
+		if(!this.props.chosenOne){
+			return;
+		}
 		var {socket} = this.props
 		var chosenOne;
 		var cardId = event.target.getAttribute('class').split(' ')[0];
@@ -31,6 +32,9 @@ class pickPhase extends Component {
 			})		
 	}
 	renderOptions(){
+		if(!this.props.options){
+			return <li key={1} className="chosen-card card"> You have disconnected from a session</li>
+		}
 		return this.props.options.map(card => {
 			return (
 					<li key={card.id} onClick={this.chooseFunniest.bind(this)} className={card.id + " chosen-card card"}>
@@ -43,12 +47,12 @@ class pickPhase extends Component {
 
 		return (
 				<div>
+					<div>
+						{this.props.chooserName + " is the chosen one."}
+					</div>
 					<ul className="chosen-cards">
 						<li className="chosen-card card">
 							{this.props.prompt}
-						</li>
-						<li>
-							Pick A Card!
 						</li>
 					</ul>
 						<ul className="chosen-cards">
@@ -60,8 +64,11 @@ class pickPhase extends Component {
 }
 function mapStateToProps(state){
 	return {
+		hand: state.hand,
+		chosenOne: state.table.chooser.chosenOne,
+		chooserName: state.table.chooser.chooserName,
 		socket: state.socket.socket,
-		prompt: state.prompt,
+		prompt: state.table.prompt,
 		options: state.pickPhase.options
 	}
 }

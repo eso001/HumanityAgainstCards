@@ -4,7 +4,7 @@ import auth from './auth_reducer';
 import user from './user_reducer';
 import lobby from './lobby_reducer';
 import socket from './socket_reducer';
-import prompt from './prompt_reducer';
+import table from './table_reducer';
 import hand from './hand_reducer';
 import playPhase from './playPhase_reducer';
 import pickPhase from './pickPhase_reducer';
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
 	user,
 	lobby,
 	socket,
-	prompt,
+	table,
 	playPhase,
 	hand,
 	pickPhase,
