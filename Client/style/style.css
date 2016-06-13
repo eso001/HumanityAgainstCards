@@ -1,9 +1,7 @@
 .error {
 	color: red;
 }
-html {
-	background-color: #EDEFEC;
-}
+
 .hand {
 	display: flex;
 	flex-direction: row;
@@ -16,8 +14,8 @@ html {
 	margin: 0 auto;
 }
 .card {
-	width: 150px;
-	height: 200px;
+	width: 200px;
+	height: 300px;
 }
 
 .hand-item {
@@ -143,12 +141,28 @@ a:active {
 	color: white;
 }
 .welcomeCardHolder {
-	max-width: 1200px;
+	width: 800px;
+
 	height: 800px;
 	background-color: inherit;
 	left: 15%;
-
+	overflow-x: scroll;
 }
+
+@media(max-width: 768px){
+	.welcomeCardHolder {
+		left: -170px;
+		overflow-x: scroll;
+		width: 800px;
+		margin-right: 0px;
+	}
+	.flyAway {
+		height: 250px;
+		width: 165px;
+
+	}
+}
+
 .authBanner {
 	width: 100%;
 	height: 200px;

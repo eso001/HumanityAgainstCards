@@ -111,6 +111,7 @@ function joinRoom(id) {
 	console.log("JoinRoom called", id)
 	return new Promise(function(resolve) {
 		User.findById(id, function(err, data) {
+			console.log("joining room err, data", err, data)
 			const user = parseString(data)
 			const username = user.username;
 			console.log("this is user data", user)

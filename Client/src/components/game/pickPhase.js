@@ -3,17 +3,6 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/gameActions';
 import { browserHistory } from 'react-router';
 class pickPhase extends Component {
-	componentDidMount(){
-		var {socket, addCard, clearAnswer} = this.props;
-		socket.on('dealOneCard', function(data){
-			console.log("deal one card receieved")
-			if(this.props.hand.length < 7){
-			addCard(data)
-			}
-				browserHistory.push('/humanity/table/playPhase')
-		})
-		clearAnswer();
-	}
 	chooseFunniest(event){
 		if(!this.props.chosenOne){
 			return;

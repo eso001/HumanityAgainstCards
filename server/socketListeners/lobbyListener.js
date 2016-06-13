@@ -1,7 +1,7 @@
 const services = require('../services/lobbyServices');
 const translateTokenToId = require('../services/globalServices').translateTokenToId;
 const parseString = require('../services/globalServices').parseString;
-const Game = require('../socketApi/socketApi').Game;
+const Game = require('../gameApi/gameApi').Game;
 
 module.exports = {
 lobbyListener: lobbyListener
@@ -48,6 +48,7 @@ function lobbyListener(socket, io){
 		var sockets = [];
 		var namespace = '/';
 		var roomName = data.room;
+		io.to(roomName).emit('begin')
 		services.startGame(roomName)
 		for (var socketId in io.nsps[namespace].adapter.rooms[roomName].sockets) {
 		    sockets.push(io.sockets.connected[socketId]);

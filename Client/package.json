@@ -27,6 +27,7 @@
   "dependencies": {
     "axios": "^0.12.0",
     "babel-preset-stage-1": "^6.1.18",
+    "fsevents": "^1.0.12",
     "lodash": "^3.10.1",
     "material-ui": "^0.15.0",
     "react": "^0.14.3",
@@ -37,6 +38,7 @@
     "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^0.14.3",
     "react-height": "^2.1.0",
+    "react-loader": "^2.4.0",
     "react-motion": "^0.4.4",
     "react-motion-ui-pack": "^0.7.3",
     "react-redux": "^4.0.0",

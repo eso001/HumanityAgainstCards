@@ -9,6 +9,7 @@ function disconnect(socket){
 }
 function sendCard(socket, data){
 	console.log("this is the card a player sent", data)
+	data.player = this.allInfo[socket.id];
 	this.playerAnswers.push(data)
 	if(this.playerAnswers.length === this.numberOfPlayers - 1){
 		console.log("this.playerAnswers", this.playerAnswers)
@@ -19,7 +20,8 @@ function sendCard(socket, data){
 }
 
 function theChosenOne(socket, data){
-	const winner = this.allInfo[socket.id]
+
+	const winner = data.player;
 
 	const matchResults = {
 		prompt: this.currentPrompt,

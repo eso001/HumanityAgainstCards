@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../actions/index';
 import { Link, browserHistory } from 'react-router';
 import io from 'socket.io-client';
-
+import Loader from './loading';
 var socket;
 var token;
 class Lobby extends Component {
@@ -27,28 +27,35 @@ class Lobby extends Component {
 				updatePlayerList(data.userSlots)
 			} 
 		})
+		socket.on('begin', function(){
+
+			browserHistory.push('/humanity/loading')
+		})
 
 	}
 	begin(){
 		socket.emit('begin', {room: this.props.room})
-		browserHistory.push('/humanity/table/playPhase');
+		browserHistory.push('/humanity/loading')
+
 	}
 
 		renderPlayers(){
 			var counter = 0
 		if(!this.props.playerList){
-			return (<li className="eachLobbyPlayer">Loading...</li>)
+			return (<Loader />)
 		} else {
 			const currentLength = this.props.playerList.length;
-			for(var i = this.props.playerList.length; i < 5; i++){
+			for(var i = 1; i < 6 - currentLength; i++){
 				let temp = "slot " + (currentLength+ i) ;
 				this.props.playerList.push({username:temp})
 			}
-		return this.props.playerList.map(player => {
+		return [...this.props.playerList.map(player => {
 			counter++
 			console.log("player", player)
 			return (<li key={counter} className="eachLobbyPlayer">{player.username}</li>)
-		})
+		}), <li className="beginLobby" onClick={this.begin.bind(this)}>
+						Begin
+					</li>]
 	}
 	}
 	render(){
@@ -58,9 +65,7 @@ class Lobby extends Component {
 					<Link className="btn btn-danger" to="/humanity/rooms">Back</Link>
 					<li className="lobbyTitle">Fight to the Death with</li>
 					{this.renderPlayers()}
-					<li className="beginLobby" onClick={this.begin.bind(this)}>
-						Begin
-					</li>
+					
 				</ul>
 			</div>
 			)

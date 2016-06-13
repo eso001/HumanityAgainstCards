@@ -18,6 +18,8 @@ import {AUTH_USER} from './actions/types';
 import PlayPhase from './components/game/playPhase';
 import PickPhase from './components/game/pickPhase';
 import Humanity from './components/Humanity';
+import RequireSocket from './components/game/requireSocket';
+import Loader from './components/game/loading';
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
@@ -35,13 +37,15 @@ ReactDOM.render(
   	<Router history={browserHistory} >
   		<Route path="/" component={App}>
   			<IndexRoute component={Welcome} />
+        
   			<Route path="signin" component={Signin} />
   			<Route path="signout" component={Signout} />
   			<Route path="signup" component={Signup} />
             <Route path="humanity" component={RequireAuth(Humanity)} >
+                <Route path="loading" component={Loader} />
     			      <Route path="rooms" component={RequireAuth(Rooms)} />
                 <Route path="lobby" component={RequireAuth(Lobby)} />
-                <Route path="table" component={RequireAuth(Table)} >
+                <Route path="table" component={RequireSocket(Table)} >
                     <Route path="playPhase" component={PlayPhase} />
                     <Route path="pickPhase" component={PickPhase} />
                 </Route>

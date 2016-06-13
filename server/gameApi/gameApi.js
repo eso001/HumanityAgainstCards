@@ -31,24 +31,21 @@ function Game(room, sockets, io){
 }
 
 Game.prototype.init = function(){
+	
 	console.log("game is inited, give all usernames emitted")
-	this.io.to(this.room).emit('giveAllUsernames')
+	
+	this.emitToRoom('giveAllUsernames')
 	if(this.started === true){
 			return "game already started";
 		}
 		console.log("game begun");
 		this.dealHandsToEachPlayer()
-		this.giveCurrentChooser()
+		
 		this.dealAPrompt()
 		this.started = true;
 }
 Game.prototype.giveCurrentChooser = function(){
-	console.log("CURRENT CHOOSER")
-	console.log("CURRENT CHOOSER")
-	console.log("CURRENT CHOOSER")
-	console.log("GIVE CURRENT CHOOSER", this.allSockets[this.indexOfCurrentPicker].id,  this.allInfo )
 	var currentChooser = this.allInfo[this.allSockets[this.indexOfCurrentPicker].id]
-	console.log("CURRENT CHOOSER", currentChooser)
 	this.emitToRoom('chooser', {chooser: currentChooser})
 	if(this.indexOfCurrentPicker >= this.numberOfPlayers - 1){
 	this.indexOfCurrentPicker = 0;
@@ -84,7 +81,6 @@ Game.prototype.dealAPrompt = function(){
 }
 
 Game.prototype.oneCardToEachPlayer = function(){
-	console.log("calling One card to Each Player")
 	var oneCardToEach = [];
 	for(var i = 0; i < this.allSockets.length; i++){
 		oneCardToEach.push(this.answers.shift())
