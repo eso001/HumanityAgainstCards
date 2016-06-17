@@ -12,5 +12,8 @@ router.post('/join', function(req, res, next){
 
 	
 })
+router.get('/', function(req, res){
+	res.send("hi");
+})
 
 module.exports = router;
