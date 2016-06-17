@@ -32,7 +32,7 @@ app.use('/lobby', lobby)
 app.use('/user', user)
 //Server Setup
 
-const port = process.env.PORT || 3090;
+const port = process.env.PORT || 8080;
 const server = common.server;
 server.listen(port);
 console.log('server listening on:', port);
