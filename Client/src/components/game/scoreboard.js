@@ -5,26 +5,36 @@ import * as actions from '../../actions/gameActions';
 class Scoreboard extends Component {
 
 	componentDidMount(){
-		var {socket, updateScoreboard} = this.props
+		var {socket, updateScoreboard, loadedTable} = this.props
+		console.log('updateScoreboard', this.props.scoreboard)
 		socket.on('updateScoreboard', function(data){
 			updateScoreboard(data)
+				loadedTable(true)
+
 			console.log(data, "scoreboard")
 		})
 	}
 	renderScoreboard(){
+		let { chooser } = this.props
 		return this.props.scoreboard.map(user => {
-			if(user.played){
-				return <li>{"user has played" + user.username + ": " + user.score}</li>
+			console.log("scoreboard user",user)
+			var tempInsert = null;
+			if(chooser === user.username){
+				return (<li key={user.username} className="scoreboard-unit"><img src="../../../assets/crown.svg" className="miniPlayedCardImg" />{" " +  user.username + ": " + user.score}</li>)
+			} else {
+				if(user.played){
+						return (<li key={user.username} className="scoreboard-unit"><span className="miniPlayedCard" style={{background: 'green'}}> </span>{" " +  user.username + ": " + user.score}</li>)
+				} else {
+						return (<li key={user.username} className="scoreboard-unit"><span className="miniPlayedCard" style={{background: 'red'}}> </span>{" " +  user.username + ": " + user.score}</li>)
+				}
 			}
-			return (<li>{user.username + ": " + user.score}</li>)
-
 		})
 	}
 	render(){
 			return (
 			<div>
 				<br />
-					<ul className="flexContainer">
+					<ul className="flexContainer scoreboard">
 						{this.renderScoreboard()}
 					</ul>
 				<br />
@@ -34,7 +44,10 @@ class Scoreboard extends Component {
 }
 function mapStateToProps(state){
 	return { socket: state.socket.socket,
-			 scoreboard: state.scoreboard}
+			username: state.user.name,
+			 scoreboard: state.scoreboard,
+			 chooser: state.table.chooser.chooserName
+			}
 }
 
 export default connect(mapStateToProps, actions)(Scoreboard)

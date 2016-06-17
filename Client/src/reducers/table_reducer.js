@@ -1,13 +1,15 @@
-import { CURRENT_PROMPT, NEW_CHOOSER } from '../actions/types';
+import { LOADED_TABLE, CURRENT_PROMPT, NEW_CHOOSER, ROUND_WINNER } from '../actions/types';
 
-export default function(state = {prompt: null, chooser: {}}, action){
+export default function(state = {prompt: null, chooser: {}, LOADED_TABLE: false, roundWinner: {}}, action){
 	switch(action.type){
 		case CURRENT_PROMPT:
-		console.log("this is prompt", action.payload)
-			return {...state, prompt: action.payload}
+			return {...state, prompt: action.payload};
 		case NEW_CHOOSER:
-			console.log("chooser object", action.payload);
 			return {...state, chooser: action.payload}
+		case ROUND_WINNER:
+			return {... state, roundWinner: action.payload};
+		case LOADED_TABLE:
+			return {... state, loaded: action.payload};
 	}
 	return state;
 }

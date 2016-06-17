@@ -14,3 +14,5 @@ export const PICKPHASE_OPTIONS = 'pickphase_options';
 export const UPDATE_SCOREBOARD = 'update_scoreboard';
 export const CLEAR_ANSWER = 'clear_answer';
 export const NEW_CHOOSER = 'new_chooser';
+export const ROUND_WINNER = 'round_winner';
+export const LOADED_TABLE = 'loaded_table';

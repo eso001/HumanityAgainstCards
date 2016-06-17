@@ -29,7 +29,7 @@ class Lobby extends Component {
 		})
 		socket.on('begin', function(){
 
-			browserHistory.push('/humanity/loading')
+			browserHistory.push('/humanity/table/playPhase')
 		})
 
 	}

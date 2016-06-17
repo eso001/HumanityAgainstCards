@@ -6,54 +6,9 @@ import Loader from 'react-loader';
 
 class Loading extends Component {
 	componentDidMount(){
+		let routed = false;
 		let counter = 0;
-		var {socket, giveFullHand, currentPrompt, giveChooser, username} = this.props;
 
-		socket.on('dealFullHand', function(data){
-			giveFullHand(data);
-			counter++
-			console.log(counter)
-			if(counter >= 4){
-				browserHistory.push('/humanity/table/playPhase')
-			}
-		})
-		socket.on('currentPrompt', function(data){
-			currentPrompt(data.text)
-			counter++
-			console.log(counter)
-			if(counter >= 4){
-				browserHistory.push('/humanity/table/playPhase')
-			}
-		})
-		socket.on('giveAllUsernames', function(){
-			socket.emit('myUsername', username)
-			counter++
-			console.log(counter)
-			if(counter >= 4){
-				browserHistory.push('/humanity/table/playPhase')
-			}
-		})
-		socket.on('chooser', function(data){
-			console.log("chooser is here", data)
-			var amITheChosenOne;
-			if(username === data.chooser){
-				amITheChosenOne = {
-					chooserName: data.chooser,
-					chosenOne: true
-				}
-			} else {
-				amITheChosenOne = {
-					chooserName: data.chooser,
-					chosenOne: false
-				}
-			}
-			giveChooser(amITheChosenOne)
-			counter++
-			console.log(counter)
-			if(counter >= 4){
-				browserHistory.push('/humanity/table/playPhase')
-			}
-		})
 	}
 
 	render (){

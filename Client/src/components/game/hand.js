@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Card from './hand-card';
 class Hand extends Component {
 		renderHand(){
-			console.log("this.props.hand", this.props.hand)
 				return this.props.hand.map(card =>{
 					return(
 						<li key={card.id} className="card-place-holder">
@@ -15,7 +14,7 @@ class Hand extends Component {
 
 	render(){
 		return (
-				<div>
+				<div className="hand-holder">
 					<ul className="hand">
 						{this.renderHand()}
 					</ul>

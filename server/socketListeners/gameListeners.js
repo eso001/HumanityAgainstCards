@@ -11,6 +11,8 @@ function sendCard(socket, data){
 	console.log("this is the card a player sent", data)
 	data.player = this.allInfo[socket.id];
 	this.playerAnswers.push(data)
+	this.playedCard(data.player)
+
 	if(this.playerAnswers.length === this.numberOfPlayers - 1){
 		console.log("this.playerAnswers", this.playerAnswers)
 		this.emitToRoom('chooseBestAnswer', this.playerAnswers)
@@ -31,14 +33,18 @@ function theChosenOne(socket, data){
 		console.log("the chosen one is heard", winner)
 	this.matchHistory.push(matchResults);
 
-	this.addOneToWinner(winner)
-	this.oneCardToEachPlayer()
+	if(this.addOneToWinner(winner) === true) {
+		return
+	}
+	this.sendWinner(matchResults);
+	this.resetPlayed();
+	this.oneCardToEachPlayer(socket.id)
 	this.dealAPrompt()
 	this.giveCurrentChooser();
 }
 
 function myUsername(socket, data){
-	console.log("calling myUsername", socket.id)
+	console.log("calling myUsername", data)
 	this.allInfo[socket.id] = data
 	this.allInfo[data] = socket.id
 	var truther = false;

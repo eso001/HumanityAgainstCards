@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/gameActions';
-import { browserHistory } from 'react-router';
+// import Timer from './timer';
+
 class pickPhase extends Component {
 	chooseFunniest(event){
 		if(!this.props.chosenOne){
@@ -22,28 +23,33 @@ class pickPhase extends Component {
 	}
 	renderOptions(){
 		if(!this.props.options){
-			return <li key={1} className="chosen-card card"> You have disconnected from a session</li>
+			return <li key={1} className="hvr-float-shadow chosen-card card"> You have disconnected from a session</li>
 		}
 		return this.props.options.map(card => {
 			return (
-					<li key={card.id} onClick={this.chooseFunniest.bind(this)} className={card.id + " chosen-card card"}>
+					<li key={card.id} onClick={this.chooseFunniest.bind(this)} className={card.id + " chosen-card card hvr-float-shadow"}>
 						{card.text}
 					</li>
 				)
 		})
 	}
+	// chooseRandom(){
+	// 	if(this.props.chosenOne){
+	// 		// const randomIndex = Math.floor(Math.random()*this.props.options.length);
+	// 		// const randomWinner = this.props.options[randomIndex]
+	// 		const randomWinner = this.props.options[0];
+	// 		this.props.socket.emit('theChosenOne', randomWinner)
+	// 	}
+	// }
 	render(){
 
 		return (
 				<div>
-					<div>
-						{this.props.chooserName + " is the chosen one."}
-					</div>
-					<ul className="chosen-cards">
-						<li className="chosen-card card">
+					<div className="prompt-holder">
+						<div className="prompt card">
 							{this.props.prompt}
-						</li>
-					</ul>
+						</div>
+					</div>
 						<ul className="chosen-cards">
 							{this.renderOptions()}
 						</ul>

@@ -31,7 +31,7 @@ function Game(room, sockets, io){
 }
 
 Game.prototype.init = function(){
-	
+
 	console.log("game is inited, give all usernames emitted")
 	
 	this.emitToRoom('giveAllUsernames')
@@ -56,6 +56,9 @@ Game.prototype.giveCurrentChooser = function(){
 Game.prototype.emitToEach = function(event, data){
 
 	for(var i = 0; i < this.allSockets.length; i++){
+		if(!data[i]){
+			continue;
+		}
 		this.allSockets[i].emit(event, data[i])
 	}
 }
@@ -80,22 +83,59 @@ Game.prototype.dealAPrompt = function(){
 	this.emitToRoom('currentPrompt', this.currentPrompt)
 }
 
-Game.prototype.oneCardToEachPlayer = function(){
+Game.prototype.oneCardToEachPlayer = function(socketid){
 	var oneCardToEach = [];
+
 	for(var i = 0; i < this.allSockets.length; i++){
+		if(this.allSockets[i].id === socketid){
+			oneCardToEach.push(null)
+			continue;
+		}
 		oneCardToEach.push(this.answers.shift())
 	}
 	this.emitToEach('dealOneCard', oneCardToEach);
 }
 Game.prototype.setupScoreboard = function(username){
-
+	if(this.scoreboard.length === this.numberOfPlayers){
+		return;
+	}
 	this.scoreboard.push({username: username, score: 0, played: false})
 }
+Game.prototype.endGame = function(username){
+	this.emitToRoom('updateScoreboard', this.scoreboard)
+	this.emitToRoom('endGame', {winner: username})
+}
 Game.prototype.addOneToWinner = function(username){
+	var gameOver = false;
+	console.log("adding one to winner, winner username:", username)
 	for(var i = 0; i < this.scoreboard.length; i++){
 	if(this.scoreboard[i].username === username){
 		this.scoreboard[i].score++
+		if(this.scoreboard[i].score >= 5){
+			this.endGame(this.scoreboard[i])
+			gameOver = true;
+		}
 	}
+	}
+	this.emitToRoom('updateScoreboard', this.scoreboard)
+	return gameOver;
+}
+Game.prototype.sendWinner = function(info){
+	console.log("emitting roundWinner", info)
+	this.emitToRoom('roundWinner', info)
+}
+Game.prototype.playedCard = function(username){
+
+	for(var i = 0; i < this.scoreboard.length; i++){
+		if(this.scoreboard[i].username === username){
+			this.scoreboard[i].played = true;
+		}
+	}
+	this.emitToRoom('updateScoreboard', this.scoreboard)
+}
+Game.prototype.resetPlayed = function(){
+	for(var i = 0; i < this.scoreboard.length; i++){
+		this.scoreboard[i].played = false;
 	}
 	this.emitToRoom('updateScoreboard', this.scoreboard)
 }

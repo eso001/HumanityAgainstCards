@@ -9,9 +9,6 @@ class Rooms extends Component {
 		console.log("play is clicked")
 		browserHistory.push('/humanity/lobby');
 	}
-	componentWillMount(){
-		this.props.fetchMessage();
-	}
 	render(){
 			return (
 			<div className="container playDiv">

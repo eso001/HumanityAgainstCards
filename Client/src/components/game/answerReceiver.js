@@ -35,11 +35,11 @@ class AnswerReceiver extends Component{
 		} else {
 			if(this.props.info){
 				return (
-				<div className="card hand-item" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'red'}}>{this.props.info.text}</div>
+				<div className="card" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'red'}}>{this.props.info.text}</div>
 				)
 			} else {
 				return (
-				<div className="card hand-item" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'red'}}>Don't place a card, you're picking this round.</div>
+				<div className="card" style={{opacity: isOver && 0.5, backgroundColor: isOver && 'red'}}>Don't place a card, you're picking this round.</div>
 				)
 			}
 		}
@@ -56,7 +56,8 @@ const { connectDropTarget, isOver } = this.props;
 function mapStateToProps(state){
 	return { info: state.playPhase.currentAnswer,
 			 socket: state.socket.socket,
-			 chosenOne: state.table.chooser.chosenOne };
+			 chosenOne: state.table.chooser.chosenOne
+			  };
 
 }
 

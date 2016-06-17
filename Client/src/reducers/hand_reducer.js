@@ -13,10 +13,15 @@ export default function(state = [], action){
 			console.log("giving answer", action.payload, state)
 			var newState = [];
 			state.forEach((item) => {
+				console.log(item);
 				if(item.id !== action.payload.id){
 					newState.push(item)
+				} else {
+				console.log("DID NOT PASS TEST", item);
+
 				}
 			})
+			console.log("new hand after given answer", newState)
 			return newState;
 	}
 	return state;

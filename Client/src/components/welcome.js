@@ -20,6 +20,7 @@ class Welcome extends Component {
 		this.finalStyle = this.finalStyle.bind(this);
 		return (
 			<div>
+			<p>Cards are real, all natural and gluten-free straight from Cards Against Humanity™</p>
 			<div className="container-fluid">
 				<div className="row">
 					<div className="relative welcomeTitleBanner col-sm-12 col-lg-12">

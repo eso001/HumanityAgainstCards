@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
-
+import {Link} from 'react-router';
 import * as actions from '../../actions/index';
 
 class Signout extends Component {
@@ -12,7 +12,9 @@ class Signout extends Component {
 		this.props.signoutUser();
 		}
 	render(){
-		return <div> Sorry to see you go :(</div>
+		return <div> Sorry to see you go :(
+				<Link to="/">Back to Home</Link>
+				</div>
 	}
 }
 function mapStateToProps(state){

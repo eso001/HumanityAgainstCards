@@ -88,27 +88,3 @@ export function authError(error){
 		payload: error
 	}
 }
-
-export function fetchMessage(){
-	const authorization = localStorage.getItem('token')
-	return function(dispatch){
-		//adding header with axios
-		axios.get(ROOT_URL, { headers: { authorization }
-		})
-		  .then(response => { 
-		  	dispatch({
-		  		type: FETCH_MESSAGE,
-		  		payload: response.data.message
-		  	})
-		  	console.log( response )})
-	}
-}
-// export function fetchMessage(){
-// 	const request = axios.get(ROOT_URL, {
-// 		headers: {authorization: localStorage.getItem('token')}
-// 	})
-// 	return {
-// 		type: FETCH_MESSAGE,
-// 		payload: request
-// 	}
-// }

@@ -14,16 +14,23 @@ class PlayPhase extends Component {
 			browserHistory.push('/humanity/table/pickPhase')
 		})
 	}
-
+	// timerEnded(){
+	// 	console.log("herro i am the timer function")
+	// 	if(!this.props.chosenOne){
+	// 		const cardToSend = this.props.hand[0];
+	// 		this.props.giveAnswer(cardToSend)
+	// 		this.props.socket.emit('sendCard', cardToSend);
+	// 	}
+	// }
 	render(){
 		return (
 				<div>
-				<div className="chosen-cards">
-					<div className="card">
+				<div className="prompt-holder">
+					<div className="prompt card">
 						{this.props.prompt}
 					</div>
 				</div>
-				<div className="chosen-cards">
+				<div className="answer-receiver chosen-cards">
 					<AnswerReceiver/>
 				</div>
 				</div>
@@ -33,6 +40,8 @@ class PlayPhase extends Component {
 function mapStateToProps(state){
 	console.log("this is state", state)
 	return {
+		chosenOne: state.table.chooser.chosenOne,
+		hand: state.hand,
 		prompt: state.table.prompt,
 		playPhase: state.playPhase,
 		socket: state.socket.socket

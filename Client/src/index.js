@@ -20,6 +20,9 @@ import PickPhase from './components/game/pickPhase';
 import Humanity from './components/Humanity';
 import RequireSocket from './components/game/requireSocket';
 import Loader from './components/game/loading';
+import Winner from './components/game/winner';
+import Loser from './components/game/loser';
+import RoundWinner from './components/game/roundWinner';
 const createStoreWithMiddleware = applyMiddleware(reduxThunk)(createStore);
 
 const store = createStoreWithMiddleware(reducers);
@@ -48,6 +51,9 @@ ReactDOM.render(
                 <Route path="table" component={RequireSocket(Table)} >
                     <Route path="playPhase" component={PlayPhase} />
                     <Route path="pickPhase" component={PickPhase} />
+                    <Route path="roundWinner" component={RoundWinner} />
+                    <Route path="winner" component={Winner} />
+                    <Route path="loser" component={Loser} />
                 </Route>
             </Route>
   		</Route>

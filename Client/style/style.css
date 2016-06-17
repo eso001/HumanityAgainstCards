@@ -1,7 +1,32 @@
+
+
 .error {
 	color: red;
 }
 
+.table {
+	position: relative;
+	bottom: 5px;
+	background-color: #d3d3d3;
+	color: black;
+}
+.hand-holder {
+	padding-top: 20px;
+	padding-bottom: 40px;
+	background-color: #222;
+	position: fixed;
+	padding-left: 40px;
+	padding-right: 60px;
+	bottom: 0;
+	left: -100px;
+	width: 100%;
+	margin: 0 5%;
+
+	/*border-radius: 20px;*/
+/*	-webkit-box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);
+-moz-box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);
+box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
+}
 .hand {
 	display: flex;
 	flex-direction: row;
@@ -14,12 +39,41 @@
 	margin: 0 auto;
 }
 .card {
-	width: 200px;
-	height: 300px;
-}
+	font-size: 18px;
+	padding: 16px 12px;
+	width: 176px;
+	height: 258px;
+	border-radius: 15px !important;
+	-webkit-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);
+    -moz-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);
+	box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);
 
+}
+.prompt-holder {
+	position: relative;
+	left: 25px;
+	width: 200px;
+	margin: 0 auto;
+}
+.answer-receiver {
+	position: relative;
+	left: 15px;
+}
+.prompt {
+	background-color: black;
+	color: white;
+	font-size: 18px;
+}
 .hand-item {
 	margin: auto 5px;
+	position: relative;
+	bottom: 0;
+	transition: bottom 0.4s ease-in;
+
+}
+.hand-item:hover{
+	transition: bottom 0.3s ease-in;
+	bottom: 25px;
 }
 
 .flexContainer {
@@ -31,16 +85,105 @@
 	justify-content: space-around;
 	width: 100%;
 }
+.scoreboardHolder {
+
+}
+.scoreboard {
+	border-radius: 6px;
+	padding: 10px 0px;
+	list-style: none;
+	color: white;
+	background-color: #222;
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+.scoreboard-unit {
+	font-size: 18px;
+}
+
+.miniPlayedCardImg {
+	margin-right: 8px;
+	height: 20px;
+}
+
+.miniPlayedCard {
+	padding: 2px 7px 2px 7px;
+    height: 4px;
+    border-radius: 3px;
+    width: 10px;
+    margin-right: 8px;
+}
 .chosen-cards {
-		display: flex;
+	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
 	flex-flow: center;
 	justify-content: space-around;
-	width: 100%;
+	width: 80%;
+	margin: 0 10%;
+}
+.winnerCardList {
+	position: relative;
+	top: 150px;
+	width: 500px;
+	margin: 0 auto;
+}
+.winnerCards {
+	margin-right: 25px;
 }
 .chosen-card {
 	margin: auto 5px;
+}
+.chosen-card:hover {
+
+}
+
+
+
+.hvr-float-shadow {
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform;
+  transition-property: transform;
+}
+.hvr-float-shadow:before {
+  pointer-events: none;
+  position: absolute;
+  z-index: -1;
+  content: '';
+  top: 100%;
+  left: 5%;
+  height: 10px;
+  width: 90%;
+  opacity: 0;
+  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  /* W3C */
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  -webkit-transition-property: transform, opacity;
+  transition-property: transform, opacity;
+}
+.hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
+  -webkit-transform: translateY(-5px);
+  transform: translateY(-5px);
+  /* move the element up by 5px */
+}
+.hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
+  opacity: 1;
+  -webkit-transform: translateY(5px);
+  transform: translateY(5px);
+  /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
 .card-place-holder{
 	list-style: none;
@@ -141,8 +284,6 @@ a:active {
 	color: white;
 }
 .welcomeCardHolder {
-	width: 800px;
-
 	height: 800px;
 	background-color: inherit;
 	left: 15%;
@@ -263,4 +404,44 @@ a:active {
 	background-color: #666;
 	color: white;
 }
+.roundWinner {
+	position: fixed;
+	z-index: 10;
+	color:white;
+	left: 38%;
+	top:20%;
+	font-size: 70px;
+}
+body {
+	background-color: #d3d3d3
+}
+.timer {
+	font-size: 20px;
+	position: fixed;
+	right: 2%;
+	top: 10%;
 
+}
+
+.winOrLose {
+	color: black;
+	opacity: 0.4;
+	font-size: 70px;
+	text-align: center;
+
+}
+.gameWinner {
+	text-align: center;
+	font-size: 140px;
+	color: white;
+
+
+}
+.backHomeLink {
+	position: absolute;
+	top: 0;
+	left: 20px;
+}
+.finalWinnerCards{
+	top: 80px;
+}
