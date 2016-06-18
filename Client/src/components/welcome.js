@@ -6,11 +6,8 @@ import _ from 'lodash';
 
 class Welcome extends Component {
 			finalStyle(index){
-				if(index > 5){
-					index = index + 1;
-				}
 			return {
-				top: spring(30 + (330 *(index%2)), {stiffness: 90, damping: 14})
+				bottom: spring(0, {stiffness: 90, damping: 14})
 			}
 		}
 
@@ -18,7 +15,7 @@ class Welcome extends Component {
 
 		this.finalStyle = this.finalStyle.bind(this);
 		return (
-			<div>
+			<div className="welcome-holder">
 			<p>Cards are real, all natural and gluten-free straight from Cards Against Humanity™</p>
 			<div className="container-fluid">
 				<div className="row">
@@ -31,35 +28,50 @@ class Welcome extends Component {
 			</div>
 			<div className="container-fluid ">
 				<div className="row gray">
-					<div className="col-lg-12 welcomeCardHolder relative">
-			  		{_.range(12).map(index => {
-	  					let defaultStyle = { top: -300 }
+					<div className="col-lg-12 col-md-12 col-sm-12 welcomeCardHolder relative">
+			  		{_.range(6).map(index => {
+	  					let defaultStyle = { bottom: 800 }
 			  			let style = this.finalStyle(index)
 			  			if(!this.props.authenticated){
 			  			if(index === 2){
 			  				return (
 			  					<Motion defaultStyle={defaultStyle} style={style} key={index}>
 			  						{(value) => {return ( 
-			  							<div className="flyAway two" style={{top:value.top, left:(232 * (index%6))}}><Link className="welcomeLinks" to="/signin">Sign in</Link></div>
+			  							<div className="flyAway two" style={{bottom: value.bottom}}><Link className="welcomeLinks" to="/signin">Sign in</Link></div>
 									)}}
 			  					</Motion>
 			  					)
 			  			}
-			  			if(index === 9){
+			  			if(index === 3){
 			  				return (
 			  					<Motion defaultStyle={defaultStyle} style={style} key={index}>
 			  						{(value) => {return ( 
-			  							<div className="flyAway nine" style={{top:value.top, left:(232 * (index%6))}}><Link className="welcomeLinks" to="/signup">Sign up</Link></div>
+			  							<div className="flyAway nine" style={{bottom: value.bottom}}><Link className="welcomeLinks" to="/signup">Sign up</Link></div>
 									)}}
 			  					</Motion>
 			  					)
 			  			}
-			  			} else {
-			  				if(index === 8){
+			  			} 
+			  			return (
+			  					<Motion defaultStyle={defaultStyle} style={style} key={index}>
+			  						{(value) => {return ( 
+			  							<div className="flyAway" style={{bottom: value.bottom}}></div>
+									)}}
+			  					</Motion>
+								)
+			  			})
+			  		}
+			  		</div>
+			  		<div className="col-lg-12 col-md-12 col-sm-12 welcomeCardHolder relative">
+			  		{_.range(6).map(index => {
+	  					let defaultStyle = { bottom: 800 }
+			  			let style = this.finalStyle(index)
+			  			if(this.props.authenticated){
+			  				if(index === 3){
 				  				return (
 				  					<Motion defaultStyle={defaultStyle} style={style} key={index}>
 				  						{(value) => {return ( 
-				  							<div className="flyAway eight" style={{top:value.top, left:(232 * (index%6))}}><Link className="welcomeLinks" to="/humanity/rooms">Search For Game</Link></div>
+				  							<div className="flyAway eight" style={{bottom: value.bottom}}><Link className="welcomeLinks" to="/humanity/rooms">Search For Game</Link></div>
 										)}}
 				  					</Motion>
 				  				)
@@ -68,7 +80,7 @@ class Welcome extends Component {
 			  			return (
 			  					<Motion defaultStyle={defaultStyle} style={style} key={index}>
 			  						{(value) => {return ( 
-			  							<div className="flyAway" style={{top:value.top, left:(232 * (index%6))}}></div>
+			  							<div className="flyAway" style={{bottom: value.bottom}}></div>
 									)}}
 			  					</Motion>
 								)

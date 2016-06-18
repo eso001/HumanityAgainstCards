@@ -27,6 +27,9 @@
 -moz-box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);
 box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 }
+.welcome-holder {
+	overflow-x: scroll;
+}
 .hand {
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -151,6 +154,7 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	    -ms-flex-pack: distribute;
 	        justify-content: space-around;
 	width: 80%;
+	height: 800px;
 	margin: 0 10%;
 }
 .winnerCardList {
@@ -237,6 +241,8 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 }
 .gray {
   background-color: #EDEFEC;
+  overflow-x: scroll;
+  width: 100%;
 }
 .black {
   width: 200px;
@@ -258,10 +264,12 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	background-color: white;
 	width: 200px;
 	height: 300px;
-	position: absolute;
+	position: relative;
 	border-radius: 15px;
 	text-align: center;
 	padding-top: 50px;
+	margin-right: 8px;
+	margin-bottom: 15px;
 	/*-webkit-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);*/
     /*-moz-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);*/
 	box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
@@ -324,17 +332,42 @@ a:active {
 	color: white;
 }
 .welcomeCardHolder {
-	height: 800px;
-	background-color: inherit;
-	left: 15%;
-	overflow-x: scroll;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-flex-flow: center;
+	    -ms-flex-flow: center;
+	        flex-flow: center;
+	-webkit-justify-content: space-around;
+	    -ms-flex-pack: distribute;
+	        justify-content: space-around;
+
+	margin: 15px 0;
 }
 
+@media(max-width: 1450px){
+	.welcomeCardHolder {
+		max-width: 1400px;
+		width: 100%;
+		overflow-x: scroll;
+		left: 5%;
+	}
+	.flyAway {
+		height: 270px;
+		width: 180px;
+	}
+}
 @media(max-width: 768px){
 	.welcomeCardHolder {
-		left: -170px;
 		overflow-x: scroll;
-		width: 800px;
+		max-width: 768px;
+		width: 100%;
 		margin-right: 0px;
 	}
 	.flyAway {
@@ -453,7 +486,7 @@ a:active {
 	font-size: 70px;
 }
 body {
-	background-color: #d3d3d3
+	background-color:#EDEFEC;
 }
 .timer {
 	font-size: 20px;
