@@ -8,7 +8,8 @@ var socket;
 var token;
 class Lobby extends Component {
 	componentWillMount(){
-		socket = io("localhost:3090")
+		socket = io('http://52.38.25.70/')
+		// socket = io('localhost:3090/');
 		this.props.giveSocket(socket);
 		token = localStorage.getItem('token')
 		token = { token }

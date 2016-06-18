@@ -28,11 +28,21 @@
 box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 }
 .hand {
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	flex-flow: center;
-	justify-content: space-around;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-flex-flow: center;
+	    -ms-flex-flow: center;
+	        flex-flow: center;
+	-webkit-justify-content: space-around;
+	    -ms-flex-pack: distribute;
+	        justify-content: space-around;
 }
 .playPhase{
 	width: 100%;	
@@ -44,8 +54,8 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	width: 176px;
 	height: 258px;
 	border-radius: 15px !important;
-	-webkit-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);
-    -moz-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);
+	/*-webkit-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);*/
+    /*-moz-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);*/
 	box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);
 
 }
@@ -78,11 +88,21 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 
 .flexContainer {
 	text-decoration: none;
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	flex-flow: center;
-	justify-content: space-around;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-flex-flow: center;
+	    -ms-flex-flow: center;
+	        flex-flow: center;
+	-webkit-justify-content: space-around;
+	    -ms-flex-pack: distribute;
+	        justify-content: space-around;
 	width: 100%;
 }
 .scoreboardHolder {
@@ -115,11 +135,21 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
     margin-right: 8px;
 }
 .chosen-cards {
+	display: -webkit-flex;
+	display: -ms-flexbox;
 	display: flex;
-	flex-direction: row;
-	flex-wrap: nowrap;
-	flex-flow: center;
-	justify-content: space-around;
+	-webkit-flex-direction: row;
+	    -ms-flex-direction: row;
+	        flex-direction: row;
+	-webkit-flex-wrap: nowrap;
+	    -ms-flex-wrap: nowrap;
+	        flex-wrap: nowrap;
+	-webkit-flex-flow: center;
+	    -ms-flex-flow: center;
+	        flex-flow: center;
+	-webkit-justify-content: space-around;
+	    -ms-flex-pack: distribute;
+	        justify-content: space-around;
 	width: 80%;
 	margin: 0 10%;
 }
@@ -144,17 +174,21 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 .hvr-float-shadow {
   display: inline-block;
   vertical-align: middle;
+  /*-webkit-transform: translateZ(0);*/
   -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+          transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  /*-webkit-backface-visibility: hidden;*/
   -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -moz-osx-font-smoothing: grayscale;
+          backface-visibility: hidden;
+  /*-moz-osx-font-smoothing: grayscale;*/
   position: relative;
-  -webkit-transition-duration: 0.3s;
+  /*-webkit-transition-duration: 0.3s;*/
   transition-duration: 0.3s;
-  -webkit-transition-property: transform;
+  /*-webkit-transition-property: transform;*/
+  transition-property: -webkit-transform;
   transition-property: transform;
+  transition-property: transform, -webkit-transform;
 }
 .hvr-float-shadow:before {
   pointer-events: none;
@@ -166,23 +200,29 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
   height: 10px;
   width: 90%;
   opacity: 0;
-  background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+  /*background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);*/
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
   /* W3C */
-  -webkit-transition-duration: 0.3s;
+  /*-webkit-transition-duration: 0.3s;*/
   transition-duration: 0.3s;
-  -webkit-transition-property: transform, opacity;
+  /*-webkit-transition-property: transform, opacity;*/
+  transition-property: opacity, -webkit-transform;
   transition-property: transform, opacity;
+  transition-property: transform, opacity, -webkit-transform;
 }
 .hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
+  /*-webkit-transform: translateY(-5px);*/
   -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
+      -ms-transform: translateY(-5px);
+          transform: translateY(-5px);
   /* move the element up by 5px */
 }
 .hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
   opacity: 1;
+  /*-webkit-transform: translateY(5px);*/
   -webkit-transform: translateY(5px);
-  transform: translateY(5px);
+      -ms-transform: translateY(5px);
+          transform: translateY(5px);
   /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
 .card-place-holder{
@@ -222,8 +262,8 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	border-radius: 15px;
 	text-align: center;
 	padding-top: 50px;
-	-webkit-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
-    -moz-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
+	/*-webkit-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);*/
+    /*-moz-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);*/
 	box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
 }
 .welcomeTitleBanner {

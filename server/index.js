@@ -9,11 +9,12 @@ const app = common.app
 const auth = require('./auth');
 const mongoose = require('mongoose');
 //DB Setup
+const dotenv = require('dotenv');
 const cors = require('cors');
 const lobby = require('./controllers/lobbyServer')
 const user = require('./controllers/user')
-mongoose.connect('mongodb://humanityagainstcards:humanityagainstcards@ds013024.mlab.com:13024/humanityagainstcards')
-
+dotenv.config();
+mongoose.connect(process.env.MONGO_HOST)
 // mongoose.connect('mongodb://')
 //App Setup
 
@@ -32,7 +33,7 @@ app.use('/lobby', lobby)
 app.use('/user', user)
 //Server Setup
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 3090;
 const server = common.server;
 server.listen(port);
 console.log('server listening on:', port);

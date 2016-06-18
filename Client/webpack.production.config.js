@@ -3,7 +3,7 @@ const webpack = require('webpack');
 
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'eval',
   entry: [
     './src/index.js'
   ],
@@ -19,7 +19,7 @@ module.exports = {
     },
     {
       test:   /\.css$/,
-      loader: "style-loader!css-loader!postcss-loader!autoprefixer-loader"
+      loader: "style-loader!css-loader!postcss-loader"
     }]
   },
   postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
@@ -38,3 +38,6 @@ module.exports = {
     contentBase: './'
   }
 };
+
+
+ 

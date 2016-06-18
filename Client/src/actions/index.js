@@ -3,7 +3,9 @@ import { browserHistory } from 'react-router';
 import {PLAYER_LIST, AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, USER_NAME, SOCKET_TYPE, ROOM_TYPE } from './types'
 //we can use browserHistory to make changes to the url
 
-const ROOT_URL = 'http://localhost:3090';
+// const ROOT_URL = 'http://localhost:3090';
+
+const ROOT_URL = 'http://52.38.25.70';
 
 export function giveRoom(room){
 	return {
@@ -69,7 +71,7 @@ export function signupUser({username, password}){
 	  .then(response => {
 	  	dispatch({ type: AUTH_USER });
 	  	localStorage.setItem('token', response.data.token)
-	  	browserHistory.push('humanity/rooms')
+	  	browserHistory.push('/humanity/rooms')
 	  })
 	  .catch(response=>{
 	  	dispatch(authError("response.data.error"))

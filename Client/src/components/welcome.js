@@ -5,7 +5,6 @@ import {Motion, spring} from 'react-motion';
 import _ from 'lodash';
 
 class Welcome extends Component {
-	
 			finalStyle(index){
 				if(index > 5){
 					index = index + 1;
@@ -84,7 +83,6 @@ class Welcome extends Component {
 
 }
 
-
 function mapStateToProps(state){
 	return {
 		authenticated: state.auth.authenticated
@@ -92,16 +90,3 @@ function mapStateToProps(state){
 }
 
 export default connect(mapStateToProps)(Welcome);
-
-	// renderAuthenticated(){
-	// 	if(this.props.authenticated){
-	// 		return <li><Link to="/humanity/rooms">Search For Game</Link></li>
-	// 	} else {
-	// 		return 	([<li key={1}>
-	// 					
-	// 				</li>,
-	// 				<li key={2}>
-	// 					<Link className="btn btn-default" to="/signup">Sign up</Link>
-	// 				</li>])
-	// 	}
-	// }
