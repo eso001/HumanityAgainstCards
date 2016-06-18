@@ -25,12 +25,10 @@ class PlayPhase extends Component {
 	render(){
 		return (
 				<div>
-				<div className="prompt-holder">
+				<div className="answer-receiver chosen-cards">
 					<div className="prompt card">
 						{this.props.prompt}
 					</div>
-				</div>
-				<div className="answer-receiver chosen-cards">
 					<AnswerReceiver/>
 				</div>
 				</div>

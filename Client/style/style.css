@@ -7,7 +7,7 @@
 .table {
 	position: relative;
 	bottom: 5px;
-	background-color: #d3d3d3;
+	background-color: #EDEFEC;
 	color: black;
 }
 .hand-holder {
@@ -154,7 +154,8 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	    -ms-flex-pack: distribute;
 	        justify-content: space-around;
 	width: 80%;
-	height: 800px;
+
+	max-height: 350px;
 	margin: 0 10%;
 }
 .winnerCardList {

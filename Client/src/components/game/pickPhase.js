@@ -45,12 +45,10 @@ class pickPhase extends Component {
 
 		return (
 				<div>
-					<div className="prompt-holder">
-						<div className="prompt card">
-							{this.props.prompt}
-						</div>
-					</div>
 						<ul className="chosen-cards">
+							<li className="prompt card">
+								{this.props.prompt}
+							</li>
 							{this.renderOptions()}
 						</ul>
 				</div>
