@@ -1,6 +1,4 @@
-var autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
-
 
 module.exports = {
   devtool: 'eval',
@@ -16,13 +14,8 @@ module.exports = {
     loaders: [{
       exclude: /node_modules/,
       loader: 'babel'
-    },
-    {
-      test:   /\.css$/,
-      loader: "style-loader!css-loader!postcss-loader"
     }]
   },
-  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
   resolve: {
     extensions: ['', '.js', '.jsx']
   },
