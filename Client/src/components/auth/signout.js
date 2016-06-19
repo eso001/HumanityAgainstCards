@@ -12,8 +12,11 @@ class Signout extends Component {
 		this.props.signoutUser();
 		}
 	render(){
-		return <div> Sorry to see you go :(
-				<Link to="/">Back to Home</Link>
+		return <div className="signout"> 
+					<p>Sorry to see you go :(</p>
+					<div>
+						<Link className="backHome btn btn-primary" to="/">Back to Home</Link>
+					</div>
 				</div>
 	}
 }

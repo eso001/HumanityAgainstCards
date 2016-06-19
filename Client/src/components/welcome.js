@@ -16,7 +16,6 @@ class Welcome extends Component {
 		this.finalStyle = this.finalStyle.bind(this);
 		return (
 			<div className="welcome-holder">
-			<p>Cards are real, all natural and gluten-free straight from Cards Against Humanity™</p>
 			<div className="container-fluid">
 				<div className="row">
 					<div className="relative welcomeTitleBanner col-sm-12 col-lg-12">
@@ -28,7 +27,7 @@ class Welcome extends Component {
 			</div>
 			<div className="container-fluid ">
 				<div className="row gray">
-					<div className="col-lg-12 col-md-12 col-sm-12 welcomeCardHolder relative">
+					<div className="col-lg-12 col-md-12 col-sm-12 welcomeCardHolder relative firstWelcomeCardHolder">
 			  		{_.range(6).map(index => {
 	  					let defaultStyle = { bottom: 800 }
 			  			let style = this.finalStyle(index)
@@ -66,6 +65,13 @@ class Welcome extends Component {
 			  		{_.range(6).map(index => {
 	  					let defaultStyle = { bottom: 800 }
 			  			let style = this.finalStyle(index)
+			  			if(index===2){
+							return (<Motion defaultStyle={defaultStyle} style={style} key={index}>
+				  						{(value) => {return ( 
+				  							<div className="flyAway ten" style={{bottom: value.bottom}}>Cards are real, all natural and gluten-free straight from Cards Against Humanity™</div>
+										)}}
+				  					</Motion>)
+			  			}
 			  			if(this.props.authenticated){
 			  				if(index === 3){
 				  				return (

@@ -27,6 +27,11 @@
 -moz-box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);
 box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 }
+
+
+.hand {
+
+}
 .welcome-holder {
 	overflow-x: scroll;
 }
@@ -86,7 +91,7 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 }
 .hand-item:hover{
 	transition: bottom 0.3s ease-in;
-	bottom: 25px;
+	bottom: 20px;
 }
 
 .flexContainer {
@@ -255,6 +260,7 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
   height: 200px;
   background-color: #493F5A;
 }
+
 .white {
   width: 200px;
   height: 200px;
@@ -299,7 +305,7 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	width: 100%;
 }
 .welcomeLinks:hover {
-	    text-decoration: none;
+	text-decoration: none;
     color: #555
 }
 a:link {
@@ -309,7 +315,7 @@ a:link {
 }
 .terribleH1 {
 	font-size: 70px;
-	    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
 }
 a:visited {
     text-decoration: none;
@@ -318,11 +324,9 @@ a:visited {
 
 a:active {
     text-decoration: underline;
-
 }
 .nine{
 	background-color: #45ABC3;
-
 }
 .two {
 	background-color: #45C3A1;
@@ -330,10 +334,12 @@ a:active {
 }
 .eight {
 	background-color: #FFBC66;
-
 	color: white;
 }
 .welcomeCardHolder {
+	margin: 0 auto;
+	max-width: 100%;
+	width: 100%;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
@@ -349,35 +355,11 @@ a:active {
 	-webkit-justify-content: space-around;
 	    -ms-flex-pack: distribute;
 	        justify-content: space-around;
-
-	margin: 15px 0;
+}
+.firstWelcomeCardHolder {
+	margin-top: 20px;
 }
 
-@media(max-width: 1450px){
-	.welcomeCardHolder {
-		max-width: 1400px;
-		width: 100%;
-		overflow-x: scroll;
-		left: 5%;
-	}
-	.flyAway {
-		height: 270px;
-		width: 180px;
-	}
-}
-@media(max-width: 768px){
-	.welcomeCardHolder {
-		overflow-x: scroll;
-		max-width: 768px;
-		width: 100%;
-		margin-right: 0px;
-	}
-	.flyAway {
-		height: 250px;
-		width: 165px;
-
-	}
-}
 
 .authBanner {
 	width: 100%;
@@ -510,13 +492,81 @@ body {
 	font-size: 140px;
 	color: white;
 
-
+}
+.ten {
+	background-color: #493F5A;
+	color: white;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-size: 18px;
 }
 .backHomeLink {
 	position: absolute;
-	top: 0;
+	top: 20px;
 	left: 20px;
 }
 .finalWinnerCards{
 	top: 80px;
+}
+.signout {
+	font-size: 50px;
+	text-align: center;
+	margin: 0 auto;
+	padding: 50px 100px;
+}
+@media(max-width: 1441px){
+	.gameWinner {
+		position: relative;
+		bottom: 15px;
+		font-size: 70px;
+		padding-bottom: 0;
+	}
+	.welcomeCardHolder {
+		max-width: 1400px;
+		width: 100%;
+		overflow-x: scroll;
+		left: 0;
+	}
+	.winnerCardList {
+		top: 55px;
+		width: 400px;
+	}
+	.finalWinnerCards {
+		padding-top: 0;
+		top: 5px;
+		padding-bottom: 15px;
+	}
+	.flyAway {
+		height: 240px;
+		width: 160px;
+	}
+	.hand-holder{
+	padding-top: 15px;
+	padding-bottom :30px;
+	}
+	.card {
+		/*360 240*/
+		/*190 285*/
+		height: 240px;
+		width: 160px;
+	}
+	
+}
+@media(max-width: 768px){
+	.roundWinner {
+		font-size: 50px;
+		left: 34%;
+	}
+	.welcomeCardHolder {
+		overflow-x: scroll;
+		max-width: 768px;
+		width: 100%;
+		margin-right: 0px;
+	}
+	.flyAway {
+		height: 250px;
+		width: 165px;
+		padding-top: 20px;
+	}
+
 }
