@@ -376,13 +376,14 @@ a:active {
 	padding-bottom: 110px;
 }
 .authButtons {
+	padding-top: 13px;
 	margin-top:20px;
 	vertical-align: middle;
 	text-align: center;
 	margin-right: 5px;
 	height: 50px;
 	width: 120px;
-	font-size: 30px;
+	font-size: 20px;
 	font-family: sans-serif;
 }
 
@@ -513,6 +514,9 @@ body {
 	text-align: center;
 	margin: 0 auto;
 	padding: 50px 100px;
+}
+.backHome {
+
 }
 @media(max-width: 1441px){
 	.gameWinner {
