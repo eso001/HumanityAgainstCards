@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const fallback = require('express-history-api-fallback')
+var fallback = require('express-history-api-fallback')
 // const httpProxy = require('http-proxy');
 const dotenv = require('dotenv')
 dotenv.config();
@@ -9,10 +9,10 @@ const app = express();
 
 var isProduction = process.env.NODE_ENV === 'production';
 var port = isProduction ? process.env.PORT : 3000;
-const publicPath = path.resolve(__dirname);
+const root = path.resolve(__dirname);
 
-app.use(express.static(publicPath));
-app.use(fallback('index.html', { publicPath: publicPath }))
+app.use(express.static(root));
+app.use(fallback('index.html', { root: root }))
 // We only want to run the workflow when not in production
 
 // It is important to catch any errors from the proxy or the
