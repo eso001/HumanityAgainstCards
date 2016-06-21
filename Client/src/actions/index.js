@@ -1,6 +1,14 @@
 import axios from 'axios';
 import { browserHistory } from 'react-router';
-import {PLAYER_LIST, AUTH_USER, AUTH_ERROR, UNAUTH_USER, FETCH_MESSAGE, USER_NAME, SOCKET_TYPE, ROOM_TYPE } from './types'
+import { PLAYER_LIST,
+		 AUTH_USER,
+		 AUTH_ERROR,
+		 UNAUTH_USER,
+		 FETCH_MESSAGE,
+		 USER_NAME,
+		 SOCKET_TYPE,
+		 ROOM_TYPE
+	    } from './types'
 //we can use browserHistory to make changes to the url
 
 // const ROOT_URL = 'http://localhost:3090';
@@ -38,31 +46,22 @@ export function fetchUsername(){
 	}
 }
 export function signinUser({ username, password }){
-
-//NOW YOU CAN RETURN A FUNCTION from an action creator! with redux thunk
-
-return function(dispatch){
-	//redux thunk lets us put dispatch as first argument of function
-	//thunk lets us place dispatch function whenever we want
-	//we can dispatch as many actions inside an action creator
-	//WITH  THUNK WE CAN WAIT AS LONG AS WE WANT TO DISPATCH AN ACTION
-	//redux thunk allows us to return a function and use dispatch inside of it!!!
-	//Submit username/password to server
-	axios.post(`${ROOT_URL}/signin`, {username, password})
-		.then(response => {
-			dispatch({ type: AUTH_USER });
-			localStorage.setItem('token', response.data.token)
-			browserHistory.push('/humanity/rooms');
-	//if request is good
-	//update state to indicate user is authenticated
-	//save JWT token
-	//redirect to the route '/feature'
-		})
-		.catch(()=>{
-	//if request is bad...
-	//show an error to the user
-			dispatch(authError("Bad Login Info"))
-		})
+	return function(dispatch){
+		axios.post(`${ROOT_URL}/signin`, {username, password})
+			.then(response => {
+				dispatch({ type: AUTH_USER });
+				localStorage.setItem('token', response.data.token)
+				browserHistory.push('/humanity/rooms');
+		//if request is good
+		//update state to indicate user is authenticated
+		//save JWT token
+		//redirect to the route '/feature'
+			})
+			.catch(()=>{
+		//if request is bad...
+		//show an error to the user
+				dispatch(authError("Bad Login Info"))
+			})
 	}
 }
 export function signupUser({username, password}){

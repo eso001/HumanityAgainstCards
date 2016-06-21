@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 export default function(ComposedComponent){
 
 	class Authentication extends Component {
-
 		//this is related to "this.context"
 		//context is just like props but skips levels in hierarchy
 		//you are forced to define these context type properties to 

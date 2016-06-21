@@ -10,7 +10,6 @@ class Welcome extends Component {
 				bottom: spring(0, {stiffness: 90, damping: 14})
 			}
 		}
-
 	render(){
 
 		this.finalStyle = this.finalStyle.bind(this);
@@ -19,9 +18,11 @@ class Welcome extends Component {
 			<div className="container-fluid">
 				<div className="row">
 					<div className="relative welcomeTitleBanner col-sm-12 col-lg-12">
-					<h1 className="terribleH1">Terrible People</h1>
-					<h6>the Gathering</h6>
-					<h5 className="slogan">For those who don't want to shuffle nine hundred seventy six million four hundred seventeen thousand one hundred and ninety-one cards</h5>
+						<h1 className="terribleH1">Terrible People</h1>
+						<h6>the Gathering</h6>
+						<h5 className="slogan">
+							For those who don't want to shuffle nine hundred seventy six million four hundred seventeen thousand one hundred and ninety-one cards
+						</h5>
 					</div>
 				</div>
 			</div>

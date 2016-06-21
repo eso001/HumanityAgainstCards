@@ -1,9 +1,6 @@
-
-
 .error {
 	color: red;
 }
-
 .table {
 	position: relative;
 	bottom: 5px;
@@ -21,16 +18,6 @@
 	left: -100px;
 	width: 100%;
 	margin: 0 5%;
-
-	/*border-radius: 20px;*/
-/*	-webkit-box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);
--moz-box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);
-box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
-}
-
-
-.hand {
-
 }
 .welcome-holder {
 	overflow-x: scroll;
@@ -62,8 +49,6 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	width: 176px;
 	height: 258px;
 	border-radius: 15px !important;
-	/*-webkit-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);*/
-    /*-moz-box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);*/
 	box-shadow: 9px 8px 10px -2px rgba(0,0,0,0.45);
 
 }
@@ -87,13 +72,11 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	position: relative;
 	bottom: 0;
 	transition: bottom 0.4s ease-in;
-
 }
 .hand-item:hover{
 	transition: bottom 0.3s ease-in;
 	bottom: 20px;
 }
-
 .flexContainer {
 	text-decoration: none;
 	display: -webkit-flex;
@@ -113,9 +96,6 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	        justify-content: space-around;
 	width: 100%;
 }
-.scoreboardHolder {
-
-}
 .scoreboard {
 	border-radius: 6px;
 	padding: 10px 0px;
@@ -125,16 +105,13 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	margin: 0 auto;
 	max-width: 800px;
 }
-
 .scoreboard-unit {
 	font-size: 18px;
 }
-
 .miniPlayedCardImg {
 	margin-right: 8px;
 	height: 20px;
 }
-
 .miniPlayedCard {
 	padding: 2px 7px 2px 7px;
     height: 4px;
@@ -175,27 +152,16 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 .chosen-card {
 	margin: auto 5px;
 }
-.chosen-card:hover {
-
-}
-
-
-
 .hvr-float-shadow {
   display: inline-block;
   vertical-align: middle;
-  /*-webkit-transform: translateZ(0);*/
   -webkit-transform: translateZ(0);
           transform: translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-  /*-webkit-backface-visibility: hidden;*/
   -webkit-backface-visibility: hidden;
           backface-visibility: hidden;
-  /*-moz-osx-font-smoothing: grayscale;*/
   position: relative;
-  /*-webkit-transition-duration: 0.3s;*/
   transition-duration: 0.3s;
-  /*-webkit-transition-property: transform;*/
   transition-property: -webkit-transform;
   transition-property: transform;
   transition-property: transform, -webkit-transform;
@@ -210,29 +176,24 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
   height: 10px;
   width: 90%;
   opacity: 0;
-  /*background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);*/
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
-  /* W3C */
-  /*-webkit-transition-duration: 0.3s;*/
   transition-duration: 0.3s;
-  /*-webkit-transition-property: transform, opacity;*/
   transition-property: opacity, -webkit-transform;
   transition-property: transform, opacity;
   transition-property: transform, opacity, -webkit-transform;
 }
 .hvr-float-shadow:hover, .hvr-float-shadow:focus, .hvr-float-shadow:active {
-  /*-webkit-transform: translateY(-5px);*/
-  -webkit-transform: translateY(-5px);
-      -ms-transform: translateY(-5px);
-          transform: translateY(-5px);
+  -webkit-transform: translateY(-10px);
+      -ms-transform: translateY(-10px);
+          transform: translateY(-10px);
   /* move the element up by 5px */
 }
 .hvr-float-shadow:hover:before, .hvr-float-shadow:focus:before, .hvr-float-shadow:active:before {
   opacity: 1;
   /*-webkit-transform: translateY(5px);*/
-  -webkit-transform: translateY(5px);
-      -ms-transform: translateY(5px);
-          transform: translateY(5px);
+  -webkit-transform: translateY(10px);
+      -ms-transform: translateY(10px);
+          transform: translateY(10px);
   /* move the element down by 5px (it will stay in place because it's attached to the element that also moves up 5px) */
 }
 .card-place-holder{
@@ -277,8 +238,6 @@ box-shadow: -4px 0px 47px 20px rgba(153,153,153,1);*/
 	padding-top: 50px;
 	margin-right: 8px;
 	margin-bottom: 15px;
-	/*-webkit-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);*/
-    /*-moz-box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);*/
 	box-shadow: 11px 10px 12px -2px rgba(0,0,0,0.45);
 }
 .welcomeTitleBanner {
@@ -359,8 +318,6 @@ a:active {
 .firstWelcomeCardHolder {
 	margin-top: 20px;
 }
-
-
 .authBanner {
 	width: 100%;
 	height: 200px;
@@ -386,7 +343,6 @@ a:active {
 	font-size: 20px;
 	font-family: sans-serif;
 }
-
 .headerRelative{
 	position: relative;
 	bottom: 15px;
@@ -397,12 +353,9 @@ a:active {
 	top: 15px;
 	font-size: 40px;
 }
-
 .playDiv {
 	padding: 100px 0;
-
 }
-
 .playButton{
 
 	height: 500px;
@@ -549,8 +502,6 @@ body {
 	padding-bottom :30px;
 	}
 	.card {
-		/*360 240*/
-		/*190 285*/
 		height: 240px;
 		width: 160px;
 	}
@@ -572,5 +523,4 @@ body {
 		width: 165px;
 		padding-top: 20px;
 	}
-
 }

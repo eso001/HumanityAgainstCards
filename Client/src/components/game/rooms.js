@@ -6,7 +6,6 @@ import {browserHistory} from 'react-router';
 
 class Rooms extends Component {
 	play(){
-		console.log("play is clicked")
 		browserHistory.push('/humanity/lobby');
 	}
 	render(){

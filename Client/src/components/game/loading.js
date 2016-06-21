@@ -10,31 +10,31 @@ class Loading extends Component {
 		let counter = 0;
 
 	}
-
 	render (){
-			var options = {
-    lines: 7,
-    length: 50,
-    width: 80,
-    radius: 20,
-    corners: 0,
-    rotate: 10,
-    direction: 1,
-    color: 'black',
-    speed: .8,
-    trail: 100,
-    shadow: true,
-    hwaccel: false,
-    zIndex: 10,
-    top: '50%',
-    left: '50%',
-    scale: 1.00
-};
-		return (
+		var options = {
+            lines: 7,
+            length: 50,
+            width: 80,
+            radius: 20,
+            corners: 0,
+            rotate: 10,
+            direction: 1,
+            color: 'black',
+            speed: .8,
+            trail: 100,
+            shadow: true,
+            hwaccel: false,
+            zIndex: 10,
+            top: '50%',
+            left: '50%',
+            scale: 1.00
+        };
 
-<Loader loaded={false} options={options} className="spinner" >
-</Loader>
-			)
+    	return (
+
+            <Loader loaded={false} options={options} className="spinner" >
+            </Loader>
+    	)
 	}
 }
 

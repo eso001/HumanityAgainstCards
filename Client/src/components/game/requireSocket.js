@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 export default function(ComposedComponent){
-
 	class RequireSocket extends Component {
 		static contextTypes = {
 			router: React.PropTypes.object
 		}
 		componentWillMount(){
+			console.log("HOC REQUIRE SOCKET");
+
 			if(!this.props.socket){
 				if(!this.props.authenticated){
 					this.context.router.push('/');

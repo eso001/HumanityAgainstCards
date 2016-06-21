@@ -52,11 +52,6 @@ class Signup extends Component {
 }
 function validate(formProps){
 	const errors= {};
-	// for (var props in formProps){
-	// 	if(!formProps[props]){
-	// 		errors[props] = `Please enter a(n) ${props}`
-	// 	}
-	// }
 	if(!formProps.username){
 		errors.username = 'Please enter an username';
 	}

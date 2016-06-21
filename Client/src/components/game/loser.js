@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router'
-
 import { connect } from 'react-redux';
 
 class Loser extends Component {
-
 	render (){
-
 		return (
 			<div> 
 				<Link className="backHomeLink" to="/">Back to Home</Link>
@@ -23,7 +20,9 @@ class Loser extends Component {
 			)
 	}
 }
+
 function mapStateToProps(state){
 	return {winnerData: state.table.roundWinner}
 }
+
 export default connect(mapStateToProps)(Loser)

@@ -8,10 +8,9 @@ class roundWinner extends Component {
 		browserHistory.push('/humanity/table/playPhase');
 	}
 	render (){
-
 		return (
 			<div>
-				<Timer time={1} callback={this.routeToPlayphase.bind(this)} />
+				<Timer time={3} callback={this.routeToPlayphase.bind(this)} />
 				<div className="roundWinner">
 					{this.props.winnerData.winner} has won!
 				</div>

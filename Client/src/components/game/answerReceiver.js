@@ -3,6 +3,7 @@ import HandCard from './hand-card';
 import { DropTarget } from 'react-dnd';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/gameActions';
+	
 	var cardTarget = {
   		drop: function(props, monitor) {
   			var item = monitor.getItem()
@@ -24,7 +25,7 @@ import * as actions from '../../actions/gameActions';
     		isOver: monitor.isOver(),
     		canDrop: monitor.canDrop()
   		};
-}
+	}
 class AnswerReceiver extends Component{
 	renderCard(){
 	const { connectDropTarget, isOver, canDrop, chosenOne } = this.props;
@@ -45,7 +46,7 @@ class AnswerReceiver extends Component{
 		}
 	}
 	render(){
-const { connectDropTarget, isOver } = this.props;
+		const { connectDropTarget, isOver } = this.props;
 		return connectDropTarget(
 				<div className="card">
 					{this.renderCard()}

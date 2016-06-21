@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import * as actions from '../../actions/gameActions';
-// import Timer from './timer';
 
 class pickPhase extends Component {
 	chooseFunniest(event){
@@ -11,12 +10,10 @@ class pickPhase extends Component {
 		var {socket} = this.props
 		var chosenOne;
 		var cardId = event.target.getAttribute('class').split(' ')[0];
-		console.log("choosing funniest", cardId, this.props.options)
 		cardId = +cardId;
 			this.props.options.forEach(function(item){
 			if(item.id === cardId){
 				chosenOne = item
-		console.log("thechosenone", chosenOne)
 		socket.emit("theChosenOne", chosenOne)
 			}
 			})		
@@ -33,16 +30,7 @@ class pickPhase extends Component {
 				)
 		})
 	}
-	// chooseRandom(){
-	// 	if(this.props.chosenOne){
-	// 		// const randomIndex = Math.floor(Math.random()*this.props.options.length);
-	// 		// const randomWinner = this.props.options[randomIndex]
-	// 		const randomWinner = this.props.options[0];
-	// 		this.props.socket.emit('theChosenOne', randomWinner)
-	// 	}
-	// }
 	render(){
-
 		return (
 				<div>
 						<ul className="chosen-cards">
