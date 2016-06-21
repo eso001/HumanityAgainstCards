@@ -25,11 +25,7 @@ module.exports = {
       'NODE_ENV': JSON.stringify('production')
     }
   })
-],
-  devServer: {
-    historyApiFallback: true,
-    contentBase: './'
-  }
+]
 };
 
 
