@@ -15,6 +15,7 @@ exports.signin = function(req, res, next){
 	res.send({token: tokenForUser(req.user)});
 }
 exports.signup = function(req, res, next){
+console.log("signup called");
 	console.log(req.body)
 	const username = req.body.username;
 	const password = req.body.password;
