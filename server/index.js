@@ -26,6 +26,9 @@ mongoose.connect(process.env.MONGO_HOST)
 //will be parsed like its json
 
 // app.use(morgan('combined'));
+app.get('/', function(req,res){
+	res.send("hello world");
+})
 app.use(cors())
 app.use(bodyParser.json({type: '*/*'}));
 auth(app);
